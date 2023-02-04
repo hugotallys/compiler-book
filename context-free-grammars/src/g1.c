@@ -6,19 +6,9 @@
 typedef long unsigned int luint;
 
 int main(int argc, char const *argv[]) {
-    
-    luint grammar;
     char input[MAXSIZE];
 
-    printf("Choose a grammar (type 1, 2, 3 4 or 5).\n");
-    scanf("%lu", &grammar);
-
-    if (grammar != 1) {
-        printf("Not implemented!\n");
-        return 0;
-    }
-
-    printf("Grammar G%lu test. Type a string.\n", grammar);
+    printf("Grammar G1 recognizer. Type a word.\n");
     scanf("%s", input);
 
     int accept = 1;
