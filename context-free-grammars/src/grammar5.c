@@ -1,41 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-#define MAXSIZE 100
-
-typedef long unsigned int luint;
-
-typedef struct stack
-{
-    luint size;
-    char* stack;
-} Stack;
-
-char peek(Stack* s) {
-    if (s->size) {
-        return s->stack[s->size-1];
-    }
-    printf("Stack is empty!\n");
-    return '\0';
-}
-
-char pop(Stack* s) {
-    char top = peek(s);
-    s->size--;
-    return top;
-}
-
-void push(Stack* s, char c) {
-    s->stack[s->size++] = c;
-}
-
-Stack* createStack(luint size) {
-    Stack* s = malloc(sizeof(Stack));
-    s->size = 0;
-    s->stack = malloc(s->size * sizeof(char));
-    return s;
-}
+#include "stack.h"
 
 int main(int argc, char const *argv[]) {
     
@@ -57,9 +22,13 @@ int main(int argc, char const *argv[]) {
                     currentState = 1;
                     push(stack, '#');
                 } else if (input[p] == '1' && peek(stack) == '#') {
-                    currentState = 3;
+                    currentState = 2;
                     pop(stack);
-                    pop(stack);
+                    if (peek(stack) == '#') {
+                        currentState = 3;
+                        pop(stack);
+                    } else
+                        accept = 0;
                 }
                 else
                     accept = 0;
@@ -75,14 +44,22 @@ int main(int argc, char const *argv[]) {
                 }
                 else
                     accept = 0;
+
+                if (peek(stack) == '$') {
+                    currentState = 4;
+                    pop(stack);
+                }
+
                 break;
+            case 4:
+                accept = 0;
             default:
                 break;
         }
         p++;
     }
 
-    if(peek(stack) == '$') {
+    if (currentState == 3 && peek(stack) == '$') {
         currentState = 4;
         pop(stack);
     }
