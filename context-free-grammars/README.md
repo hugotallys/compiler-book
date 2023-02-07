@@ -1,6 +1,6 @@
 # Context free grammars
 
-Below we have examples of _context free grammars_ and designed automatas that recognize them. The implemented programs ignore any white space, tab and next line symbol fed into the input.
+Below we have examples of _context free grammars_ and designed automatas that recognize them. The implemented program ignores any white space, tab and next line symbol fed into the input.
 
 ## Grammar descriptions
 
@@ -59,9 +59,9 @@ Deriving, by applying rules, we see that $\mathcal{L}(G_5) = 0^n01^n \ , \ n > 0
 
 ## Running the examples
 
-To interact with the recognizer programs:
+To interact with the recognizer program:
 
 ```console
-$ make all
-$ ./build/grammar1 # Grammar 1 recognizer.
+$ make pushdown
+$ ./build/pushdown
 ```

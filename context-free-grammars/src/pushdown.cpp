@@ -101,11 +101,27 @@ int main(int argc, char const *argv[])
     std::vector<char> stack;
     std::map<char, std::vector<std::string>> rules;
 
-    rules['S'] = getProductions("Zc");
-    rules['Z'] = getProductions("ZA|A");
-    rules['A'] = getProductions("aZb|ab");
+    std::cout << "### Pushdown Automaton ###" << std::endl;
+    std::cout << "    Type the rules of any CFG in the following format:" << std::endl << std::endl;
+    std::cout << "    Y->X1|X2|...|Xn" << std::endl << std::endl;
+    
+    std::cout << "The first rule must have an S on the RHS (initial symbol)." << std::endl;
+    std::cout << "To finish adding rules type 'end'" << std::endl << std::endl;
 
     std::string input;
+
+    do {
+        std::cout << "Rule: ";
+        std::cin >> input;
+
+        if (input == "end")
+            break;
+
+        char symbol = input[0];
+        std::string expression = input.substr(3, input.length() - 3);
+
+        rules[symbol] = getProductions(expression);
+    } while (true);
 
     std::cout << "Enter input string: ";
     std::cin >> input;
