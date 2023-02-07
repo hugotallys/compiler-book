@@ -1,3 +1,3 @@
-# compiler-book
+# Compilers: Principles, Techniques, and Tools
 
-Solutions to the exercises of [Introduction to Compilers and Language Design book](https://www3.nd.edu/~dthain/compilerbook/)
+Building a compiler from scratch in C. Also solutions to some exercises of the book.
