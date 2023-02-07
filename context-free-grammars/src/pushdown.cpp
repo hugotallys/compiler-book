@@ -2,14 +2,6 @@
 #include <vector>
 #include <iostream>
 
-/*
-    S --> Zc
-    Z --> ZA | A
-    A --> aZb | ab
-*/
-
-std::vector<char> stack;
-
 std::vector<std::string> getProductions(std::string expression)
 {
     std::vector<std::string> prod;
@@ -32,12 +24,33 @@ std::vector<std::string> getProductions(std::string expression)
     return prod;
 }
 
-void printStack()
+void popRule(std::vector<char>& stack, std::string rule) {
+    for (unsigned i = 0; i < rule.length(); i++) {
+        stack.pop_back();
+    }
+}
+
+void pushRule(std::vector<char>& stack, std::string rule) {
+    std::cout << "Aborting thread, failed!" << std::endl;
+    for (unsigned int i = 0; i < rule.length(); i++) {
+        stack.push_back(rule[rule.length() - (1 + i)]);
+    }
+}
+
+void printRule(std::string rule, char symbol) {
+    std::cout << "Applying rule: " << symbol << " --> ";
+    for (unsigned i = 0; i < rule.length(); i++) {
+        std::cout << rule[i];
+    }
+    std::cout << std::endl;
+}
+
+void printStack(std::vector<char>& stack)
 {
     std::cout << "Stack: ";
     for (unsigned i = 0; i < stack.size(); i++)
     {
-        std::cout << stack[i];
+        std::cout << "| " << stack[i] << ' ';
     }
     std::cout << std::endl;
 }
@@ -48,35 +61,10 @@ bool isNonTerminal(char symbol) {
     return false;
 }
 
-void popRule(std::string rule, unsigned *pointer) {
-    for (unsigned i = 0; i < rule.length(); i++) {
-        if (!isNonTerminal(stack.back())) {
-            *pointer = *pointer - 1;
-        }
-        stack.pop_back();
-    }
-}
-
-void printRule(std::string rule, char symbol) {
-    std::cout << "Chose rule: " << symbol << " --> ";
-    for (unsigned i = 0; i < rule.length(); i++) {
-        std::cout << rule[i];
-    }
-    std::cout << std::endl;
-}
-
-void pushRule(std::string rule) {
-    // std::cout << "Rule length: " << rule.length() << std::endl;
-    for (unsigned int i = 0; i < rule.length(); i++) {
-        // std::cout << "Pushing symbol " << rule[rule.length() - (1 + i)] << " to the stack" << std::endl;
-        stack.push_back(rule[rule.length() - (1 + i)]);
-    }
-}
-
-bool pushdown(std::map<char, std::vector<std::string>> rules, std::string input, unsigned pointer)
-{   
-    std::cout << "---" << std::endl;
-    printStack();
+bool pushdown(std::vector<char>& stack, std::map<char, std::vector<std::string>>& rules, std::string input, unsigned pointer)
+{
+    std::cout << std::endl << "--- Input head: " << pointer << " ---" << std::endl << std::endl;
+    printStack(stack);
     if (stack.size() == 0)
     {
         if (pointer == input.length())
@@ -89,26 +77,28 @@ bool pushdown(std::map<char, std::vector<std::string>> rules, std::string input,
     char top = stack.back();
     stack.pop_back();
     
-    if (top == input[pointer])
-        return pushdown(rules, input, pointer + 1);
+    if (top == input[pointer]) {
+        if (pushdown(stack, rules, input, pointer + 1))
+            return true;
+    }
     else if (isNonTerminal(top)) {
         for (unsigned int i = 0; i < rules[top].size(); i++) {
             printRule(rules[top][i], top);
-            pushRule(rules[top][i]);
-            if (pushdown(rules, input, pointer))
+            pushRule(stack, rules[top][i]);
+            if (pushdown(stack, rules, input, pointer))
                 return true;
             else {
-                std::cout << "Popping rule from stack [failed]!" << std::endl;
-                popRule(rules[top][i], &pointer);
+                popRule(stack, rules[top][i]);
             }
         }
-        stack.push_back(top);
     }
+    stack.push_back(top);
     return false;
 }
 
 int main(int argc, char const *argv[])
 {
+    std::vector<char> stack;
     std::map<char, std::vector<std::string>> rules;
 
     rules['S'] = getProductions("Zc");
@@ -122,7 +112,7 @@ int main(int argc, char const *argv[])
 
     stack.push_back('S');
 
-    if ( pushdown(rules, input, 0) )
+    if ( pushdown(stack, rules, input, 0) )
         std::cout << "Accepted" << std::endl;
     else
         std::cout << "Rejected" << std::endl;
