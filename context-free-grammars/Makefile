@@ -9,5 +9,8 @@ grammar2: build
 grammar5: build
 	gcc -Wall src/grammar5.c src/stack.c -o build/grammar5
 
+pushdown: build
+	g++ -Wall src/pushdown.cpp -o build/pushdown
+
 build:
 	mkdir build
