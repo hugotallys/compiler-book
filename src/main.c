@@ -1,26 +1,92 @@
 #include <stdio.h>
 
-// function to open a txt file
-void openFile(char *fileName)
+#define N 4
+
+FILE *inputFile;
+char buffer[2 * N];
+int input = 0;
+int fence = 0;
+
+void fillBuffer(int start, int end)
 {
-    FILE *file = fopen(fileName, "r");
-    if (file == NULL)
+    int i;
+    char readChar;
+
+    for (i = start; i < end; i++)
     {
-        printf("Error opening file");
+        readChar = fgetc(inputFile);
+        if (readChar == EOF)
+        {
+            buffer[i] = '\0';
+            return;
+        }
+        else
+            buffer[i] = readChar;
+    }
+}
+
+void init(char *fileName)
+{
+    inputFile = fopen(fileName, "r");
+    if (inputFile == NULL)
+    {
+        printf("Error opening input file.");
         return;
     }
-    char line[100];
-    while (fgets(line, sizeof(line), file))
+    fillBuffer(0, N);
+}
+
+char nextChar()
+{
+    if (input == -1)
+        return 0;
+
+    char c = buffer[input];
+
+    if (c == '\0')
     {
-        printf("%s", line);
+        if (feof(inputFile))
+        {
+            input = -1;
+            return 0;
+        }
     }
-    printf("\n");
-    fclose(file);
+
+    input = (input + 1) % (2 * N);
+
+    if (input % N == 0)
+    {
+        fillBuffer(input, input + N);
+        fence = (input + N) % (2 * N);
+    }
+
+    return c;
 }
 
 int main(int argc, char const *argv[])
 {
+    char currentChar, dispChar;
     char *filePath = "../test/program.txt";
-    openFile(filePath);
+
+    init(filePath);
+
+    while (input != -1)
+    {
+        currentChar = nextChar();
+        if (currentChar != '\0')
+        {
+            dispChar = currentChar == '\n' ? ' ' : currentChar;
+            printf("Read char: %c ", dispChar);
+            if (currentChar == ' ')
+                puts("(space)");
+            else if (currentChar == '\n')
+                puts("(line break)");
+            else
+                puts("");
+        }
+    }
+
+    fclose(inputFile);
+
     return 0;
 }
