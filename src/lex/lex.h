@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#define N 4
+#define N 4096
 
 extern int input;
 extern int fence;

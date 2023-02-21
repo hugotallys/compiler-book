@@ -24,7 +24,6 @@ void fillBuffer(FILE *file, int start, int end)
 
 void init(FILE *file)
 {
-
     if (file == NULL)
     {
         printf("Error opening input file.");
@@ -58,4 +57,12 @@ char nextChar(FILE *file)
     }
 
     return c;
+}
+
+int rollBack()
+{
+    if (input == fence)
+        return 0;
+    input = (input - 1) % (2 * N);
+    return 1;
 }
