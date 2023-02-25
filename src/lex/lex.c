@@ -11,6 +11,33 @@ const char *keywords[] = {"program",
                           "var",
                           "integer"};
 
+const char *tokenTypeNames[] = {"COLON",
+                                "SEMICOLON",
+                                "COMMA",
+                                "LPAR",
+                                "RPAR",
+                                "LBRA",
+                                "RBRA",
+                                "ASSIGN",
+                                "PLUS",
+                                "SUB",
+                                "MULT",
+                                "DIVIDE",
+                                "IDIVIDE",
+                                "RELOP",
+                                "UNION",
+                                "INTERSECTION",
+                                "INTEGER",
+                                "REAL",
+                                "IDENTIFIER",
+                                "KEYWORD",
+                                "ERROR"};
+
+void printToken(Token token)
+{
+    printf("%s\t%s\n", token.value, tokenTypeNames[token.type]);
+}
+
 void fillBuffer(FILE *file, int start, int end)
 {
     int i;

@@ -53,4 +53,6 @@ int rollBack();
 
 Token nextToken(FILE *file);
 
+void printToken(Token token);
+
 #endif

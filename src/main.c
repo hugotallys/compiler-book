@@ -1,33 +1,6 @@
 #include <stdio.h>
 #include "lex/lex.h"
 
-const char *tokenTypeNames[] = {"COLON",
-                                "SEMICOLON",
-                                "COMMA",
-                                "LPAR",
-                                "RPAR",
-                                "LBRA",
-                                "RBRA",
-                                "ASSIGN",
-                                "PLUS",
-                                "SUB",
-                                "MULT",
-                                "DIVIDE",
-                                "IDIVIDE",
-                                "RELOP",
-                                "UNION",
-                                "INTERSECTION",
-                                "INTEGER",
-                                "REAL",
-                                "IDENTIFIER",
-                                "KEYWORD",
-                                "ERROR"};
-
-void printToken(Token token)
-{
-    printf("%s\t%s\n", token.value, tokenTypeNames[token.type]);
-}
-
 int main(int argc, char const *argv[])
 {
     Token token;
@@ -43,6 +16,8 @@ int main(int argc, char const *argv[])
         else
             break;
     }
+
+    fclose(inputFile);
 
     return 0;
 }
