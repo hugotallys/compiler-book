@@ -6,12 +6,33 @@
 
 #define N 4096
 #define MAX_LEN 64
+#define true 1
+#define false 0
+#define KEYWORDS 5
 
 typedef enum _token_type
 {
+    COLON,
     SEMICOLON,
+    COMMA,
+    LPAR,
+    RPAR,
+    LBRA,
+    RBRA,
+    ASSIGN,
+    PLUS,
+    SUB,
+    MULT,
+    DIVIDE,
+    IDIVIDE,
+    RELOP,
+    UNION,
+    INTERSECTION,
+    INTEGER,
+    REAL,
     IDENTIFIER,
-    KEYWORD
+    KEYWORD,
+    ERROR
 } TokenType;
 
 typedef struct _token
