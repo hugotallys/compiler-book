@@ -1,5 +1,5 @@
-program myProgram;
+program myprogram;
 
 begin
-
+    var pi : real := -3.1415;
 end

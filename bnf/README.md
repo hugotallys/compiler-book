@@ -137,7 +137,7 @@
                           | <empty>
 
 <opBag1>                ::= U
-                          | ∩
+                          | I
 
 <opBag2>                ::= elemento
                           | quantidade
@@ -158,10 +158,10 @@
                           | <num>
                           | 0
 
-<real_num>              ::= + <num>.<num>
-                          | - <num>.<num>
-                          | + 0.<num>
-                          | - 0.<num>
+<real_num>              ::= +<num>.<num>
+                          | -<num>.<num>
+                          | +0.<num>
+                          | -0.<num>
                           | <num>.<num>
                           | 0.<num>
 
