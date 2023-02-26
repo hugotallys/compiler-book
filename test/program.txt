@@ -1,5 +1,14 @@
 program myProgram;
 
+var a: integer;
+var b: integer;
+var c: integer;
+
 begin
-    var myBag : bagOfReal := {(0.12, 2), (-1.7, 4), (3, 3)};
+    a := 1;
+    b := 0;
+
+    if (a <> b) then begin
+        write(c);
+    end
 end

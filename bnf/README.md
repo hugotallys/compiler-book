@@ -126,14 +126,14 @@
                           | Pos(<integer_num>)
                           | <opBag2>(<conteudo>)
 
-<conteudo>              ::= {}
-                          | {[<integer_num>,<integer_num>]<conteudo_integer_cont>}
-                          | {[<real_num>,<integer_num>]<conteudo_real_cont>}
+<conteudo>              ::= { }
+                          | { ( <integer_num> , <integer_num> ) <conteudo_integer_cont> }
+                          | { ( <real_num> , <integer_num> ) <conteudo_real_cont> }
 
-<conteudo_integer_cont> ::= ,[<integer_num>,<integer_num>]<conteudo_integer_cont>
+<conteudo_integer_cont> ::= , ( <integer_num> , <integer_num> ) <conteudo_integer_cont>
                           | <empty>
 
-<conteudo_real_cont>    ::= ,[<real_num>,<integer_num>]<conteudo_real_cont>
+<conteudo_real_cont>    ::= , ( <real_num> , <integer_num> ) <conteudo_real_cont>
                           | <empty>
 
 <opBag1>                ::= Union

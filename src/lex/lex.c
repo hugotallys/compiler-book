@@ -280,6 +280,7 @@ Token nextToken(FILE *file)
             else if (readChar == '+' || readChar == '-')
             {
                 readChar = nextChar(file);
+                while (readChar == ' ' || readChar == '\n' || readChar == '\t') { readChar = nextChar(file); }
                 if (isDigit(readChar))
                 {
                     lexeme[lexSize++] = readChar;
