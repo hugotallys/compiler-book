@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "lex/lex.h"
 
-int main(int argc, char const *argv[])
+int main()
 {
     Token token;
     FILE *inputFile = fopen("../test/program.txt", "r");

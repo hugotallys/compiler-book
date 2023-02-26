@@ -17,8 +17,8 @@
 
 <tipo_var>              ::= integer
                           | real
-                          | bag of integer
-                          | bag of real
+                          | bagOfInteger
+                          | bagOfReal
 
 <variaveis>             ::= <id> <mais_var>
 
@@ -48,8 +48,8 @@
 
 <tipo_funcao>           ::= integer
                           | real
-                          | bag of integer
-                          | bag of real
+                          | bagOfInteger
+                          | bagOfReal
 
 <sentencas>             ::= <comando> <mais_sentencas>
 
@@ -123,7 +123,7 @@
                           | <real_num> 
 
 <expressao_bag>         ::= <opBag1>(<conteudo>, <conteudo>)
-                          | pos(<integer_num>)
+                          | Pos(<integer_num>)
                           | <opBag2>(<conteudo>)
 
 <conteudo>              ::= {}
@@ -136,11 +136,11 @@
 <conteudo_real_cont>    ::= ,[<real_num>,<integer_num>]<conteudo_real_cont>
                           | <empty>
 
-<opBag1>                ::= U
-                          | I
+<opBag1>                ::= Union
+                          | Intersection
 
-<opBag2>                ::= elemento
-                          | quantidade
+<opBag2>                ::= Element
+                          | Quantity
 
 <id>                    ::= <letra><id_cont>
 
@@ -169,6 +169,10 @@
                           | b
                           | ...
                           | z
+                          | A
+                          | B
+                          | ...
+                          | Z
 
 <digito>                ::= 0
                           | 1

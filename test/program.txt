@@ -1,5 +1,5 @@
-program myprogram;
+program myProgram;
 
 begin
-    var pi : real := -3.1415;
+    var myBag : bagOfReal := {(0.12, 2), (-1.7, 4), (3, 3)};
 end

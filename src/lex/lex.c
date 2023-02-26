@@ -3,40 +3,61 @@
 int input;
 int fence;
 char buffer[2 * N];
-char lexeme[MAX_LEN];
 
-const char *keywords[] = {"program",
-                          "begin",
-                          "end",
-                          "var",
-                          "integer"};
+const char *keywords[] = {
+    "program",
+    "begin",
+    "end",
+    "var",
+    "integer",
+    "real",
+    "bagOfInteger",
+    "bagOfReal",
+    "procedure",
+    "function",
+    "read",
+    "write",
+    "for",
+    "to",
+    "do",
+    "repeat",
+    "until",
+    "while",
+    "if",
+    "then",
+    "else"
+};
 
-const char *tokenTypeNames[] = {"COLON",
-                                "SEMICOLON",
-                                "COMMA",
-                                "LPAR",
-                                "RPAR",
-                                "LBRA",
-                                "RBRA",
-                                "ASSIGN",
-                                "PLUS",
-                                "SUB",
-                                "MULT",
-                                "DIVIDE",
-                                "IDIVIDE",
-                                "RELOP",
-                                "UNION",
-                                "INTERSECTION",
-                                "INTEGER",
-                                "REAL",
-                                "IDENTIFIER",
-                                "KEYWORD",
-                                "ERROR"};
+const char *tokenTypeNames[] = {
+    "COLON",
+    "SEMICOLON",
+    "COMMA",
+    "L_PARENTHESIS",
+    "R_PARENTHESIS",
+    "L_BRACKET",
+    "R_BRACKET",
+    "ASSIGN",
+    "SUM_OP",
+    "SUB_OP",
+    "MUL_OP",
+    "DIV_OP",
+    "IDIV_OP",
+    "REL_OP",
+    "BAG_UNION",
+    "BAG_INTERSECTION",
+    "BAG_POS",
+    "BAG_ELEMENT",
+    "BAG_QUANTITY",
+    "INTEGER",
+    "REAL",
+    "IDENTIFIER",
+    "KEYWORD",
+    "ERROR"
+};
 
-void printToken(Token token)
-{
-    printf("%s\t%s\n", token.value, tokenTypeNames[token.type]);
-}
+static inline int isLetter(char c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
+
+static inline int isDigit(char c) { return (c >= '0' && c <= '9'); }
 
 void fillBuffer(FILE *file, int start, int end)
 {
@@ -45,7 +66,7 @@ void fillBuffer(FILE *file, int start, int end)
 
     for (i = start; i < end; i++)
     {
-        readChar = fgetc(file);
+        readChar = (char) fgetc(file);
         if (readChar == EOF)
         {
             buffer[i] = '\0';
@@ -105,7 +126,7 @@ int rollBack()
 int isKeyword(char *lexeme)
 {
     int i;
-    for (i = 0; i < KEYWORDS; i++)
+    for (i = 0; i < sizeof(keywords) / sizeof(char*); i++)
     {
         if (strcmp(lexeme, keywords[i]) == 0)
             return 1;
@@ -122,14 +143,19 @@ Token createToken(TokenType type, char *lexeme, int lexSize)
     return token;
 }
 
-int isLetter(char c)
+Token recognizeNumber(FILE* file, char readChar, char *lexeme, int lexSize)
 {
-    return (c >= 'a' && c <= 'z');
-}
-
-int isDigit(char c)
-{
-    return (c >= '0' && c <= '9');
+    int isReal = false;
+    readChar = nextChar(file);
+    while (isDigit(readChar) || readChar == '.')
+    {
+        if (readChar == '.')
+            isReal = true;
+        lexeme[lexSize++] = readChar;
+        readChar = nextChar(file);
+    }
+    rollBack();
+    return createToken(isReal ? REAL : INTEGER, lexeme, lexSize);
 }
 
 Token nextToken(FILE *file)
@@ -151,33 +177,29 @@ Token nextToken(FILE *file)
             else if (readChar == ',')
                 return createToken(COMMA, lexeme, lexSize);
             else if (readChar == '(')
-                return createToken(LPAR, lexeme, lexSize);
+                return createToken(L_PARENTHESIS, lexeme, lexSize);
             else if (readChar == ')')
-                return createToken(RPAR, lexeme, lexSize);
+                return createToken(R_PARENTHESIS, lexeme, lexSize);
             else if (readChar == '{')
-                return createToken(LBRA, lexeme, lexSize);
+                return createToken(L_BRACKET, lexeme, lexSize);
             else if (readChar == '}')
-                return createToken(RBRA, lexeme, lexSize);
+                return createToken(R_BRACKET, lexeme, lexSize);
             else if (readChar == '*')
-                return createToken(MULT, lexeme, lexSize);
+                return createToken(MUL_OP, lexeme, lexSize);
             else if (readChar == '=')
-                return createToken(RELOP, lexeme, lexSize);
-            else if (readChar == 'U')
-                return createToken(UNION, lexeme, lexSize);
-            else if (readChar == 'I')
-                return createToken(INTERSECTION, lexeme, lexSize);
+                return createToken(REL_OP, lexeme, lexSize);
             else if (readChar == '<')
             {
                 readChar = nextChar(file);
                 if (readChar == '=' || readChar == '>')
                 {
                     lexeme[lexSize++] = readChar;
-                    return createToken(RELOP, lexeme, lexSize);
+                    return createToken(REL_OP, lexeme, lexSize);
                 }
                 else
                 {
                     rollBack();
-                    return createToken(RELOP, lexeme, lexSize);
+                    return createToken(REL_OP, lexeme, lexSize);
                 }
             }
             else if (readChar == '/')
@@ -186,12 +208,12 @@ Token nextToken(FILE *file)
                 if (readChar == '/')
                 {
                     lexeme[lexSize++] = readChar;
-                    return createToken(IDIVIDE, lexeme, lexSize);
+                    return createToken(IDIV_OP, lexeme, lexSize);
                 }
                 else
                 {
                     rollBack();
-                    return createToken(DIVIDE, lexeme, lexSize);
+                    return createToken(DIV_OP, lexeme, lexSize);
                 }
             }
             else if (readChar == ':' || readChar == '>')
@@ -200,12 +222,12 @@ Token nextToken(FILE *file)
                 if (readChar == '=')
                 {
                     lexeme[lexSize++] = readChar;
-                    return createToken(*lexeme == ':' ? ASSIGN : RELOP, lexeme, lexSize);
+                    return createToken(*lexeme == ':' ? ASSIGN : REL_OP, lexeme, lexSize);
                 }
                 else
                 {
                     rollBack();
-                    return createToken(*lexeme == ':' ? COLON : RELOP, lexeme, lexSize);
+                    return createToken(*lexeme == ':' ? COLON : REL_OP, lexeme, lexSize);
                 }
             }
             else if (isLetter(readChar))
@@ -218,7 +240,17 @@ Token nextToken(FILE *file)
                 }
                 rollBack();
                 Token token = createToken(IDENTIFIER, lexeme, lexSize);
-                if (isKeyword(token.value))
+                if (strcmp(token.value, "Union") == 0)
+                    token.type = BAG_UNION;
+                else if (strcmp(token.value, "Intersection") == 0)
+                    token.type = BAG_INTERSECTION;
+                else if (strcmp((token.value), "Pos") == 0)
+                    token.type = BAG_POS;
+                else if (strcmp((token.value), "Element") == 0)
+                    token.type = BAG_ELEMENT;
+                else if (strcmp((token.value), "Quantity") == 0)
+                    token.type = BAG_QUANTITY;
+                else if (isKeyword(token.value))
                     token.type = KEYWORD;
                 return token;
             }
@@ -243,17 +275,7 @@ Token nextToken(FILE *file)
             }
             else if (isDigit(readChar))
             {
-                int isReal = false;
-                readChar = nextChar(file);
-                while (isDigit(readChar) || readChar == '.')
-                {
-                    if (readChar == '.')
-                        isReal = true;
-                    lexeme[lexSize++] = readChar;
-                    readChar = nextChar(file);
-                }
-                rollBack();
-                return createToken(isReal ? REAL : INTEGER, lexeme, lexSize);
+                return recognizeNumber(file, readChar, lexeme, lexSize);
             }
             else if (readChar == '+' || readChar == '-')
             {
@@ -261,22 +283,12 @@ Token nextToken(FILE *file)
                 if (isDigit(readChar))
                 {
                     lexeme[lexSize++] = readChar;
-                    int isReal = false;
-                    readChar = nextChar(file);
-                    while (isDigit(readChar) || readChar == '.')
-                    {
-                        if (readChar == '.')
-                            isReal = true;
-                        lexeme[lexSize++] = readChar;
-                        readChar = nextChar(file);
-                    }
-                    rollBack();
-                    return createToken(isReal ? REAL : INTEGER, lexeme, lexSize);
+                    return recognizeNumber(file, readChar, lexeme, lexSize);
                 }
                 else
                 {
                     rollBack();
-                    return createToken(*lexeme == '+' ? PLUS : SUB, lexeme, lexSize);
+                    return createToken(*lexeme == '+' ? SUM_OP : SUB_OP, lexeme, lexSize);
                 }
             }
             else
@@ -288,7 +300,7 @@ Token nextToken(FILE *file)
     } while (true);
 }
 
-int terminatedInput()
+void printToken(Token token)
 {
-    return input == -1;
+    printf("%-15s %s\n", token.value, tokenTypeNames[token.type]);
 }
