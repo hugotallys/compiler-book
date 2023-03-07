@@ -1,14 +1,14 @@
 program myProgram;
 
-var a: integer;
-var b: integer;
-var c: integer;
+var a, b, c : integer;
 
 begin
     a := 1;
-    b := 0;
+    b := -1;
 
-    if (a <> b) then begin
+    a := a + b;
+
+    if (a = 0) then begin
         write(c);
     end
 end
