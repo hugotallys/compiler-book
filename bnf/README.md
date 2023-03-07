@@ -52,6 +52,7 @@
                           | bagOfReal
 
 <sentencas>             ::= <comando> <mais_sentencas>
+                          | <empty>
 
 <mais_sentencas>        ::= ; <cont_sentencas>
 
@@ -104,7 +105,7 @@
                           | <expressao_bag>
 
 <expressao_num>         ::= <termo>
-                          | <id><argumentos>
+                          | <id> <argumentos>
 
 <operando>              ::= <id>
                           | <integer_num>
@@ -117,14 +118,14 @@
                           | /
                           | // 
 
-<termo>                 ::= <operador>(<operando>, <operando>)
+<termo>                 ::= <operador> ( <operando> , <operando> )
                           | <id>
                           | <integer_num>
                           | <real_num> 
 
-<expressao_bag>         ::= <opBag1>(<conteudo>, <conteudo>)
-                          | Pos(<integer_num>)
-                          | <opBag2>(<conteudo>)
+<expressao_bag>         ::= <opBag1> ( <conteudo> , <conteudo> )
+                          | Pos ( <integer_num> )
+                          | <opBag2> ( <conteudo> )
 
 <conteudo>              ::= { }
                           | { ( <integer_num> , <integer_num> ) <conteudo_integer_cont> }
