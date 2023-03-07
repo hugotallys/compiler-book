@@ -32,22 +32,14 @@ const char *tokenTypeNames[] = {
     "COLON",
     "SEMICOLON",
     "COMMA",
-    "L_PARENTHESIS",
-    "R_PARENTHESIS",
-    "L_BRACKET",
-    "R_BRACKET",
-    "ASSIGN",
-    "SUM_OP",
-    "SUB_OP",
-    "MUL_OP",
-    "DIV_OP",
-    "IDIV_OP",
-    "REL_OP",
-    "BAG_UNION",
-    "BAG_INTERSECTION",
-    "BAG_POS",
-    "BAG_ELEMENT",
-    "BAG_QUANTITY",
+    "LEFT_PARENTHESIS",
+    "RIGHT_PARENTHESIS",
+    "LEFT_BRACKET",
+    "RIGHT_BRACKET",
+    "ASSIGNMENT",
+    "OPERATOR",
+    "RELATION",
+    "BAG_OPERATOR",
     "INTEGER",
     "REAL",
     "IDENTIFIER",
@@ -177,29 +169,29 @@ Token nextToken(FILE *file)
             else if (readChar == ',')
                 return createToken(COMMA, lexeme, lexSize);
             else if (readChar == '(')
-                return createToken(L_PARENTHESIS, lexeme, lexSize);
+                return createToken(LEFT_PARENTHESIS, lexeme, lexSize);
             else if (readChar == ')')
-                return createToken(R_PARENTHESIS, lexeme, lexSize);
+                return createToken(RIGHT_PARENTHESIS, lexeme, lexSize);
             else if (readChar == '{')
-                return createToken(L_BRACKET, lexeme, lexSize);
+                return createToken(LEFT_BRACKET, lexeme, lexSize);
             else if (readChar == '}')
-                return createToken(R_BRACKET, lexeme, lexSize);
+                return createToken(RIGHT_BRACKET, lexeme, lexSize);
             else if (readChar == '*')
-                return createToken(MUL_OP, lexeme, lexSize);
+                return createToken(OPERATOR, lexeme, lexSize);
             else if (readChar == '=')
-                return createToken(REL_OP, lexeme, lexSize);
+                return createToken(RELATION, lexeme, lexSize);
             else if (readChar == '<')
             {
                 readChar = nextChar(file);
                 if (readChar == '=' || readChar == '>')
                 {
                     lexeme[lexSize++] = readChar;
-                    return createToken(REL_OP, lexeme, lexSize);
+                    return createToken(RELATION, lexeme, lexSize);
                 }
                 else
                 {
                     rollBack();
-                    return createToken(REL_OP, lexeme, lexSize);
+                    return createToken(RELATION, lexeme, lexSize);
                 }
             }
             else if (readChar == '/')
@@ -208,12 +200,12 @@ Token nextToken(FILE *file)
                 if (readChar == '/')
                 {
                     lexeme[lexSize++] = readChar;
-                    return createToken(IDIV_OP, lexeme, lexSize);
+                    return createToken(OPERATOR, lexeme, lexSize);
                 }
                 else
                 {
                     rollBack();
-                    return createToken(DIV_OP, lexeme, lexSize);
+                    return createToken(OPERATOR, lexeme, lexSize);
                 }
             }
             else if (readChar == ':' || readChar == '>')
@@ -222,12 +214,12 @@ Token nextToken(FILE *file)
                 if (readChar == '=')
                 {
                     lexeme[lexSize++] = readChar;
-                    return createToken(*lexeme == ':' ? ASSIGN : REL_OP, lexeme, lexSize);
+                    return createToken(*lexeme == ':' ? ASSIGNMENT : RELATION, lexeme, lexSize);
                 }
                 else
                 {
                     rollBack();
-                    return createToken(*lexeme == ':' ? COLON : REL_OP, lexeme, lexSize);
+                    return createToken(*lexeme == ':' ? COLON : RELATION, lexeme, lexSize);
                 }
             }
             else if (isLetter(readChar))
@@ -241,15 +233,15 @@ Token nextToken(FILE *file)
                 rollBack();
                 Token token = createToken(IDENTIFIER, lexeme, lexSize);
                 if (strcmp(token.value, "Union") == 0)
-                    token.type = BAG_UNION;
+                    token.type = BAG_OPERATOR;
                 else if (strcmp(token.value, "Intersection") == 0)
-                    token.type = BAG_INTERSECTION;
+                    token.type = BAG_OPERATOR;
                 else if (strcmp((token.value), "Pos") == 0)
-                    token.type = BAG_POS;
+                    token.type = BAG_OPERATOR;
                 else if (strcmp((token.value), "Element") == 0)
-                    token.type = BAG_ELEMENT;
+                    token.type = BAG_OPERATOR;
                 else if (strcmp((token.value), "Quantity") == 0)
-                    token.type = BAG_QUANTITY;
+                    token.type = BAG_OPERATOR;
                 else if (isKeyword(token.value))
                     token.type = KEYWORD;
                 return token;
@@ -289,7 +281,7 @@ Token nextToken(FILE *file)
                 else
                 {
                     rollBack();
-                    return createToken(*lexeme == '+' ? SUM_OP : SUB_OP, lexeme, lexSize);
+                    return createToken(OPERATOR, lexeme, lexSize);
                 }
             }
             else
