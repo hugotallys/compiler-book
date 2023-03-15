@@ -1,4 +1,5 @@
 import numpy as np
+import re
 import pandas as pd
 from parglare import Parser, Grammar
 
@@ -12,14 +13,22 @@ def table_entry(value):
 
 if __name__ == "__main__":
 
-    grammar = r"""
-    E: E '+' T | T;
-    T: T '*' F | F;
-    F: '(' E ')' | id;
-    
-    terminals
-    id: /id/;
-    """
+    with open('grammar.txt', 'r') as file:
+        grammar = file.read()
+
+    # re to capture any text beetween %{ and %} and store under patterns
+    patterns = re.findall(r"%\{(.+?)%\}", grammar, re.DOTALL)[0].strip('\n').strip(' ')
+    patterns = re.findall(r"/(.+?)/ ([A-Z_]+)", patterns, re.DOTALL)
+
+    grammar = re.sub(r"::=", ':', grammar)
+    grammar = re.sub(r"[<>]", "", grammar)
+    grammar = re.sub(r"\n\n", ";\n\n", grammar)
+
+    # remove patterns from grammar
+    grammar = re.sub(r"%\{(.+?)%\}", "", grammar, flags=re.DOTALL)
+
+    for pattern, label in patterns:
+        grammar = re.sub(pattern, "'" + label + "'", grammar)
 
     g = Grammar.from_string(grammar)
 
@@ -52,5 +61,3 @@ if __name__ == "__main__":
     df = df.fillna('')
 
     print(df)
-
-    df.to_csv('lr_table.csv', sep='\t', index=True)
