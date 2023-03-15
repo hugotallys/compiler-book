@@ -1,0 +1,20 @@
+<E> ::= <E> + <T>
+      | <T>
+
+<T> ::= <T> * <F>
+      | <F>
+
+<F> ::= ( <E> )
+      | id
+
+%{
+    /\+/ OPERATOR
+
+    /\*/ OPERATOR
+
+    /\(/ LEFT_BRACKET
+
+    /\)/ RIGHT_BRACKET
+
+    /id/ IDENTIFIER
+%}
