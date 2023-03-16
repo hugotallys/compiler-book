@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
     # re to capture any text beetween %{ and %} and store under patterns
     patterns = re.findall(r"%\{(.+?)%\}", grammar, re.DOTALL)[0].strip('\n').strip(' ')
-    patterns = re.findall(r"/(.+?)/ ([A-Z_]+)", patterns, re.DOTALL)
+    patterns = re.findall(r"/(.+?)/ ([a-zA-Z_]+)", patterns, re.DOTALL)
 
     grammar = re.sub(r"::=", ':', grammar)
     grammar = re.sub(r"[<>]", "", grammar)
@@ -30,7 +30,11 @@ if __name__ == "__main__":
     for pattern, label in patterns:
         grammar = re.sub(pattern, "'" + label + "'", grammar)
 
+    print(grammar)
+
     g = Grammar.from_string(grammar)
+
+    prods = g.productions
 
     parser = Parser(g)
 
@@ -40,11 +44,21 @@ if __name__ == "__main__":
     non_terminals = " ".join(g.nonterminals.keys()).replace("S'", '')
     terminals = " ".join(g.terminals.keys())
 
-    print('-' * 20 + " LR Table " + '-' * 20)
+    print('-' * 20 + " LR Parser - Shift Reduce Table " + '-' * 20)
+
     print(f"- Number of states:\t{n_states}")
+
     print("- Terminal symbols:\t" + terminals)
+
     print("- Nonterminal symbols:\t" + non_terminals)
-    print('-' * 50)
+    print('-' * 72)
+
+    print("- Productions:")
+
+    for prod in prods:
+        print(prod)
+
+    print('-' * 72)
 
     df = pd.DataFrame(
         index=range(n_states), columns=(terminals + ' ' + non_terminals).split(" ")
@@ -59,5 +73,8 @@ if __name__ == "__main__":
             df.at[i, str(symbol)] = str(go.state_id)
 
     df = df.fillna('')
+
+    # drops the EMPTY column
+    df = df.drop(columns=['EMPTY'])
 
     print(df)

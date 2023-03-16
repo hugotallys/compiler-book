@@ -1,20 +1,10 @@
-<E> ::= <E> + <T>
-      | <T>
+<S> ::= b <B>
 
-<T> ::= <T> * <F>
-      | <F>
-
-<F> ::= ( <E> )
-      | id
+<B> ::= <B> a a
+      | a
 
 %{
-    /\+/ OPERATOR
+    /b/ b
 
-    /\*/ OPERATOR
-
-    /\(/ LEFT_BRACKET
-
-    /\)/ RIGHT_BRACKET
-
-    /id/ IDENTIFIER
+    /a/ a
 %}
