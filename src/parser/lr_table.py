@@ -1,8 +1,7 @@
-import numpy as np
 import re
 import pandas as pd
 
-from csnake import CodeWriter, Enum, Variable, FormattedLiteral
+from csnake import CodeWriter, Enum
 from parglare import Parser, Grammar
 
 
@@ -14,18 +13,18 @@ def table_entry(value):
 
 
 def get_action_table_row(row):
-    return [get_action_table_entry(entry) for entry in row]
+    return [get_action_table_entry(r) for r in row]
 
 
-def get_action_table_entry(entry):
-    if entry == '':
+def get_action_table_entry(action_value):
+    if action_value == '':
         return {'action': 'ERROR', 'id': -1}
-    elif entry == 'acc':
+    elif action_value == 'acc':
         return {'action': 'ACCEPT', 'id': -1}
-    elif entry[0] == 's':
-        return {'action': 'SHIFT', 'id': entry[1:]}
-    elif entry[0] == 'r':
-        return {'action': 'REDUCE', 'id': entry[1:]}
+    elif action_value[0] == 's':
+        return {'action': 'SHIFT', 'id': action_value[1:]}
+    elif action_value[0] == 'r':
+        return {'action': 'REDUCE', 'id': action_value[1:]}
 
 
 if __name__ == "__main__":
@@ -33,8 +32,8 @@ if __name__ == "__main__":
     with open('grammar.txt', 'r') as file:
         grammar = file.read()
 
-    # re to capture any text beetween %{ and %} and store under patterns
-    patterns = re.findall(r"%\{(.+?)%\}", grammar, re.DOTALL)[0].strip('\n').strip(' ')
+    # re to capture any text beetween %{ and }% and store under patterns
+    patterns = re.findall(r"%\{(.+?)}%", grammar, re.DOTALL)[0].strip('\n').strip(' ')
     patterns = re.findall(r"/(.+?)/ ([a-zA-Z_]+)", patterns, re.DOTALL)
 
     grammar = re.sub(r"::=", ':', grammar)
@@ -42,7 +41,7 @@ if __name__ == "__main__":
     grammar = re.sub(r"\n\n", ";\n\n", grammar)
 
     # remove patterns from grammar
-    grammar = re.sub(r"%\{(.+?)%\}", "", grammar, flags=re.DOTALL)
+    grammar = re.sub(r"%\{(.+?)}%", "", grammar, flags=re.DOTALL)
 
     for pattern, label in patterns:
         grammar = re.sub(pattern, "'" + label + "'", grammar)
@@ -133,7 +132,7 @@ if __name__ == "__main__":
     cw.add_enum(nonterminals_enum)
 
     production_array = [
-        { "left": str(p.symbol), "rightSize": len(p.rhs) } for p in prods
+        {"left": str(p.symbol), "rightSize": len(p.rhs)} for p in prods
     ]
 
     cw.add_line('')
@@ -175,8 +174,6 @@ if __name__ == "__main__":
 
     text = "int goTable[N_STATES][NON_TERMINAL_SIZE] = {"
 
-    print(goto_table)
-
     for i, row in enumerate(goto_table):
         text += "{"
         for j, entry in enumerate(row):
@@ -190,5 +187,7 @@ if __name__ == "__main__":
     text += "};"
 
     cw.add_line(text)
+
+    cw.add_line('')
 
     cw.write_to_file('output.c')
