@@ -3,20 +3,36 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
-#define N_STATES 7
-#define N_PRODUCTIONS 3
+#define N_STATES 13
+#define N_PRODUCTIONS 7
 
-typedef enum {
-    b, a, STOP, TERMINAL_SIZE
+typedef enum
+{
+    PLUS,
+    MULT,
+    LPAREN,
+    RPAREN,
+    ID,
+    STOP,
+    TERMINAL_SIZE
 } Terminal;
 
-typedef enum {
-    S, B, NON_TERMINAL_SIZE
+typedef enum
+{
+    S,
+    E,
+    T,
+    F,
+    NON_TERMINAL_SIZE
 } NonTerminal;
 
 typedef enum {
-    shift, reduce, accept, error
+    SHIFT,
+    REDUCE,
+    ACCEPT,
+    ERROR
 } Action;
 
 typedef struct {
@@ -81,27 +97,13 @@ int peek(Stack *stack)
 
 int main ()
 {
-    TableEntry actionTable[N_STATES][TERMINAL_SIZE] = {
-            { { .action = shift, .id = 2 }, { .action = error }, { .action = error } },
-            { { .action = error }, { .action = error }, { .action = accept } },
-            { { .action = error }, { .action = shift, .id = 4 }, { .action = error } },
-            { { .action = error }, { .action = shift, .id = 5 }, { .action = reduce, .id = 1 } },
-            { { .action = error }, { .action = reduce, .id = 3 }, { .action = reduce, .id = 3 } },
-            { { .action = error }, { .action = shift, .id = 6 }, { .action = error } },
-            { { .action = error }, { .action = reduce, .id = 2 }, { .action = reduce, .id = 2 } }
-    };
+    Production productions[N_PRODUCTIONS] = {{.left = S, .rightSize = 1}, {.left = E, .rightSize = 3}, {.left = E, .rightSize = 1}, {.left = T, .rightSize = 3}, {.left = T, .rightSize = 1}, {.left = F, .rightSize = 3}, {.left = F, .rightSize = 1}};
 
-    int goTable[N_STATES][NON_TERMINAL_SIZE] = {
-            {1, -1}, {-1, -1}, {-1, 3},
-            {-1, -1}, {-1, -1}, {-1, -1},
-            {-1, -1}
-    };
+    TableEntry actionTable[N_STATES][TERMINAL_SIZE] = {{{.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 5}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 6}, {.action = ERROR, .id = -1}}, {{.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = ACCEPT, .id = -1}}, {{.action = SHIFT, .id = 7}, {.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 1}}, {{.action = REDUCE, .id = 3}, {.action = SHIFT, .id = 8}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 3}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 3}}, {{.action = REDUCE, .id = 5}, {.action = REDUCE, .id = 5}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 5}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 5}}, {{.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 5}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 6}, {.action = ERROR, .id = -1}}, {{.action = REDUCE, .id = 7}, {.action = REDUCE, .id = 7}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 7}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 7}}, {{.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 5}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 6}, {.action = ERROR, .id = -1}}, {{.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 5}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 6}, {.action = ERROR, .id = -1}}, {{.action = SHIFT, .id = 7}, {.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}, {.action = SHIFT, .id = 12}, {.action = ERROR, .id = -1}, {.action = ERROR, .id = -1}}, {{.action = REDUCE, .id = 2}, {.action = SHIFT, .id = 8}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 2}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 2}}, {{.action = REDUCE, .id = 4}, {.action = REDUCE, .id = 4}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 4}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 4}}, {{.action = REDUCE, .id = 6}, {.action = REDUCE, .id = 6}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 6}, {.action = ERROR, .id = -1}, {.action = REDUCE, .id = 6}}};
 
-    Production productions[N_PRODUCTIONS] = {
-            { .left = S, .rightSize = 2 }, { .left = B, .rightSize = 3 }, { .left = B, .rightSize = 1 }
-    };
+    int goTable[N_STATES][NON_TERMINAL_SIZE] = {{1, 2, 3, 4}, {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, 9, 3, 4}, {-1, -1, -1, -1}, {-1, -1, 10, 4}, {-1, -1, -1, 11}, {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1}};
 
-    Terminal input[10] = { b , a , a, a, a, a, STOP};
+    Terminal input[10] = { LPAREN, ID, MULT, ID, RPAREN, PLUS, ID, STOP};
 
     int head = 0;
     Terminal currTerminal = input[head];
@@ -116,12 +118,12 @@ int main ()
 
         TableEntry entry = actionTable[s][currTerminal];
 
-        if ( entry.action == shift )
+        if ( entry.action == SHIFT )
         {
             push(stack, entry.id);
             currTerminal = input[++head];
         }
-        else if ( entry.action == reduce )
+        else if ( entry.action == REDUCE )
         {
             for (int i = 0; i < productions[entry.id-1].rightSize; i++ )
                 pop(stack);
@@ -130,7 +132,7 @@ int main ()
 
             push(stack, goTable[s][productions[entry.id-1].left]);
         }
-        else if ( entry.action == accept )
+        else if ( entry.action == ACCEPT )
         {
             puts("ACCEPTED! [PARSING IS DONE]");
             break;

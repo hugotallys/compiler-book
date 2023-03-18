@@ -1,6 +1,8 @@
 import numpy as np
 import re
 import pandas as pd
+
+from csnake import CodeWriter, Enum, Variable, FormattedLiteral
 from parglare import Parser, Grammar
 
 
@@ -9,6 +11,21 @@ def table_entry(value):
     if value[0][1] == 'A':
         return "acc"
     return value[0][1].lower() + value[1].replace(']', '')
+
+
+def get_action_table_row(row):
+    return [get_action_table_entry(entry) for entry in row]
+
+
+def get_action_table_entry(entry):
+    if entry == '':
+        return {'action': 'ERROR', 'id': -1}
+    elif entry == 'acc':
+        return {'action': 'ACCEPT', 'id': -1}
+    elif entry[0] == 's':
+        return {'action': 'SHIFT', 'id': entry[1:]}
+    elif entry[0] == 'r':
+        return {'action': 'REDUCE', 'id': entry[1:]}
 
 
 if __name__ == "__main__":
@@ -29,8 +46,6 @@ if __name__ == "__main__":
 
     for pattern, label in patterns:
         grammar = re.sub(pattern, "'" + label + "'", grammar)
-
-    print(grammar)
 
     g = Grammar.from_string(grammar)
 
@@ -76,5 +91,104 @@ if __name__ == "__main__":
 
     # drops the EMPTY column
     df = df.drop(columns=['EMPTY'])
+    terminals = terminals.replace(' EMPTY ', ' ')
 
     print(df)
+
+    cw = CodeWriter()
+
+    # include stdio.h and stdlib.h
+    cw.include("<stdio.h>")
+    cw.include("<stdlib.h>")
+
+    cw.add_line('')
+
+    # define the number of states and productions
+    cw.add_define('N_STATES', n_states)
+    cw.add_define('N_PRODUCTIONS', len(prods) - 1)
+
+    # enum for terminals
+    terminals_enum = Enum('Terminal', typedef=True)
+
+    for terminal in terminals.split(' '):
+        if terminal != "EMPTY":
+            terminals_enum.add_value(terminal)
+
+    terminals_enum.add_value("TERMINAL_SIZE")
+
+    cw.add_line('')
+
+    cw.add_enum(terminals_enum)
+
+    # enum for nonterminals
+    nonterminals_enum = Enum('NonTerminal', typedef=True)
+
+    for nonterminal in non_terminals.strip(' ').split(' '):
+        nonterminals_enum.add_value(nonterminal)
+
+    nonterminals_enum.add_value("NON_TERMINAL_SIZE")
+
+    cw.add_line('')
+
+    cw.add_enum(nonterminals_enum)
+
+    production_array = [
+        { "left": str(p.symbol), "rightSize": len(p.rhs) } for p in prods
+    ]
+
+    cw.add_line('')
+
+    text = "Production productions[N_PRODUCTIONS] = {" + ", ".join(
+        [f"{{.left = {p['left']}, .rightSize = {p['rightSize']}}}" for p in production_array[1:]]
+    ) + "};"
+
+    cw.add_line(text)
+
+    cw.add_line('')
+
+    # define the action table
+    action_table = df[terminals.split(' ')].to_numpy()
+
+    action_table = [get_action_table_row(row) for row in action_table]
+
+    # adds the action table to the code
+    text = "TableEntry actionTable[N_STATES][TERMINAL_SIZE] = {"
+
+    for i, row in enumerate(action_table):
+        text += "{"
+        for j, entry in enumerate(row):
+            text += f"{{.action = {entry['action']}, .id = {entry['id']}}}"
+            if j != len(row) - 1:
+                text += ", "
+        text += "}"
+        if i != len(action_table) - 1:
+            text += ", "
+
+    text += "};"
+
+    cw.add_line(text)
+
+    cw.add_line('')
+
+    # define the goto table
+    goto_table = df[non_terminals.strip(' ').split(' ')].replace('', -1).to_numpy()
+
+    text = "int goTable[N_STATES][NON_TERMINAL_SIZE] = {"
+
+    print(goto_table)
+
+    for i, row in enumerate(goto_table):
+        text += "{"
+        for j, entry in enumerate(row):
+            text += f"{entry}"
+            if j != len(row) - 1:
+                text += ", "
+        text += "}"
+        if i != len(goto_table) - 1:
+            text += ", "
+
+    text += "};"
+
+    cw.add_line(text)
+
+    cw.write_to_file('output.c')
