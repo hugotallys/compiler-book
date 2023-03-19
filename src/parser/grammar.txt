@@ -1,22 +1,25 @@
-<S> ::= <E>
+programa : KEYWORD IDENTIFIER SEMICOLON corpo;
 
-<E> ::= <E> + <T>
-      | <T>
+corpo : declara BEGIN END;
 
-<T> ::= <T> * <F>
-      | <F>
+declara : KEYWORD dvar mais_dc | EMPTY;
 
-<F> ::= ( <E> )
-      | id
+mais_dc : SEMICOLON cont_dc;
 
-%{
-    /\+/ PLUS
+cont_dc : dvar mais_dc | EMPTY;
 
-    /\*/ MULT
+dvar : variaveis COLON KEYWORD;
 
-    /\(/ LPAREN
+variaveis : IDENTIFIER mais_var;
 
-    /\)/ RPAREN
+mais_var : COMMA variaveis | EMPTY;
 
-    /id/ ID
-}%
+terminals
+
+KEYWORD : /KEYWORD/;
+IDENTIFIER: /IDENTIFIER/;
+SEMICOLON: /SEMICOLON/;
+COMMA: /COMMA/;
+COLON: /COLON/;
+BEGIN: /BEGIN/;
+END: /END/;

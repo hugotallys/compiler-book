@@ -6,8 +6,6 @@ char buffer[2 * N];
 
 const char *keywords[] = {
     "program",
-    "begin",
-    "end",
     "var",
     "integer",
     "real",
@@ -29,9 +27,15 @@ const char *keywords[] = {
 };
 
 const char *tokenTypeNames[] = {
-    "COLON",
+    "KEYWORD",
+    "IDENTIFIER",
     "SEMICOLON",
     "COMMA",
+    "COLON",
+    "BEGIN",
+    "END",
+    "EMPTY",
+    "STOP",
     "LEFT_PARENTHESIS",
     "RIGHT_PARENTHESIS",
     "LEFT_BRACKET",
@@ -42,9 +46,7 @@ const char *tokenTypeNames[] = {
     "BAG_OPERATOR",
     "INTEGER",
     "REAL",
-    "IDENTIFIER",
-    "KEYWORD",
-    "ERROR"
+    "TOKEN_ERROR"
 };
 
 static inline int isLetter(char c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
@@ -242,6 +244,10 @@ Token nextToken(FILE *file)
                     token.type = BAG_OPERATOR;
                 else if (strcmp((token.value), "Quantity") == 0)
                     token.type = BAG_OPERATOR;
+                else if (strcmp(token.value, "begin") == 0)
+                    token.type = BEGIN;
+                else if (strcmp(token.value, "end") == 0)
+                    token.type = END;
                 else if (isKeyword(token.value))
                     token.type = KEYWORD;
                 return token;
@@ -285,7 +291,7 @@ Token nextToken(FILE *file)
                 }
             }
             else
-                return createToken(ERROR, lexeme, lexSize);
+                return createToken(TOKEN_ERROR, lexeme, lexSize);
         }
         else
             lexSize = 0;

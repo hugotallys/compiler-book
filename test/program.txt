@@ -1,14 +1,7 @@
 program myProgram;
 
-var a, b, c : integer;
-
 begin
-    a := 1;
-    b := -1;
 
-    a := a + b;
-
-    if (a = 0) then begin
-        write(c);
-    end
 end
+
+

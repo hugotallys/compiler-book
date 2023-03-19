@@ -11,9 +11,15 @@
 
 typedef enum token_type_
 {
-    COLON,
+    KEYWORD,
+    IDENTIFIER,
     SEMICOLON,
     COMMA,
+    COLON,
+    BEGIN,
+    END,
+    EMPTY,
+    STOP,
     LEFT_PARENTHESIS,
     RIGHT_PARENTHESIS,
     LEFT_BRACKET,
@@ -24,9 +30,7 @@ typedef enum token_type_
     BAG_OPERATOR,
     INTEGER,
     REAL,
-    IDENTIFIER,
-    KEYWORD,
-    ERROR
+    TOKEN_ERROR
 } TokenType;
 
 typedef struct token_

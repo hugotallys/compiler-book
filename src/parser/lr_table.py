@@ -33,18 +33,18 @@ if __name__ == "__main__":
         grammar = file.read()
 
     # re to capture any text beetween %{ and }% and store under patterns
-    patterns = re.findall(r"%\{(.+?)}%", grammar, re.DOTALL)[0].strip('\n').strip(' ')
-    patterns = re.findall(r"/(.+?)/ ([a-zA-Z_]+)", patterns, re.DOTALL)
+    # patterns = re.findall(r"%\{(.+?)}%", grammar, re.DOTALL)[0].strip('\n').strip(' ')
+    # patterns = re.findall(r"/(.+?)/ ([a-zA-Z_]+)", patterns, re.DOTALL)
 
-    grammar = re.sub(r"::=", ':', grammar)
-    grammar = re.sub(r"[<>]", "", grammar)
-    grammar = re.sub(r"\n\n", ";\n\n", grammar)
+    # grammar = re.sub(r"::=", ':', grammar)
+    # grammar = re.sub(r"[<>]", "", grammar)
+    # grammar = re.sub(r"\n\n", ";\n\n", grammar)
 
     # remove patterns from grammar
-    grammar = re.sub(r"%\{(.+?)}%", "", grammar, flags=re.DOTALL)
+    # grammar = re.sub(r"%\{(.+?)}%", "", grammar, flags=re.DOTALL)
 
-    for pattern, label in patterns:
-        grammar = re.sub(pattern, "'" + label + "'", grammar)
+    # for pattern, label in patterns:
+    #     grammar = re.sub(pattern, "'" + label + "'", grammar)
 
     g = Grammar.from_string(grammar)
 
@@ -89,8 +89,8 @@ if __name__ == "__main__":
     df = df.fillna('')
 
     # drops the EMPTY column
-    df = df.drop(columns=['EMPTY'])
-    terminals = terminals.replace(' EMPTY ', ' ')
+    # df = df.drop(columns=['EMPTY'])
+    # terminals = terminals.replace(' EMPTY ', ' ')
 
     print(df)
 
@@ -110,8 +110,7 @@ if __name__ == "__main__":
     terminals_enum = Enum('Terminal', typedef=True)
 
     for terminal in terminals.split(' '):
-        if terminal != "EMPTY":
-            terminals_enum.add_value(terminal)
+        terminals_enum.add_value(terminal)
 
     terminals_enum.add_value("TERMINAL_SIZE")
 
