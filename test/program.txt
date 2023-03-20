@@ -1,21 +1,14 @@
 program myProgram;
 
-var a: integer; var b : real;
+var n : integer;
 
-procedure poo(bag : bagOfInteger; i : integer);
-
+function fact(x : integer) : integer;
+var aux, return : integer;
 begin
-
-end;
-
-function foo(bag : bagOfInteger; i : integer) : integer;
-
-begin
-
+    aux := fact( -(x, 1) );
+    return := *(x, aux);
 end;
 
 begin
-
+    write(n);
 end
-
-

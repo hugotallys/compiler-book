@@ -1,7 +1,7 @@
 programa    : KEYWORD IDENTIFIER SEMICOLON corpo
             ;
 
-corpo   : declara rotina BEGIN END
+corpo   : declara rotina BEGIN sentencas END
         ;
 
 declara : KEYWORD dvar mais_dc
@@ -54,6 +54,100 @@ cont_lista_id   : COMMA lista_id
                 | EMPTY
                 ;
 
+sentencas   : comando mais_sentencas
+            | EMPTY
+            ;
+
+mais_sentencas  : SEMICOLON cont_sentencas
+                ;
+
+cont_sentencas  : sentencas
+                ;
+
+var_read    : IDENTIFIER mais_var_read
+            ;
+
+mais_var_read   : COMMA var_read
+                | EMPTY
+                ;
+
+var_write   : IDENTIFIER mais_var_write
+            ;
+
+mais_var_write  : COMMA var_write
+                | EMPTY
+                ;
+
+comando : READ LEFT_PARENTHESIS var_read RIGHT_PARENTHESIS
+        | WRITE LEFT_PARENTHESIS var_write RIGHT_PARENTHESIS
+        | FOR IDENTIFIER ASSIGN expressao KEYWORD expressao KEYWORD BEGIN sentencas END
+        | REPEAT sentencas KEYWORD LEFT_PARENTHESIS condicao RIGHT_PARENTHESIS
+        | WHILE LEFT_PARENTHESIS condicao RIGHT_PARENTHESIS KEYWORD BEGIN sentencas END
+        | IF LEFT_PARENTHESIS condicao RIGHT_PARENTHESIS KEYWORD BEGIN sentencas END pfalsa
+        | IDENTIFIER ASSIGN expressao
+        | chamada_procedimento
+        ;
+
+chamada_procedimento    :   IDENTIFIER argumentos
+                        ;
+
+argumentos  : LEFT_PARENTHESIS lista_arg RIGHT_PARENTHESIS
+            | EMPTY
+            ;
+
+lista_arg   : expressao cont_lista_arg
+            ;
+
+cont_lista_arg  : COMMA lista_arg
+                | EMPTY
+                ;
+
+condicao    : RELATION LEFT_PARENTHESIS expressao_num COMMA expressao_num
+            | RELATION LEFT_PARENTHESIS expressao_bag COMMA expressao_bag
+            ;
+
+pfalsa      : KEYWORD BEGIN sentencas END
+            | EMPTY
+            ;
+
+expressao   : expressao_num
+            | expressao_bag
+            ;
+
+expressao_num   : termo
+                | IDENTIFIER argumentos
+                ;
+
+operando    : IDENTIFIER
+            | INTEGER
+            | REAL
+            | OPERATOR LEFT_PARENTHESIS operando COMMA operando RIGHT_PARENTHESIS
+            ;
+
+termo   : IDENTIFIER
+        | INTEGER
+        | REAL
+        | OPERATOR LEFT_PARENTHESIS operando COMMA operando RIGHT_PARENTHESIS
+        ;
+
+expressao_bag   : OPERATOR_BAG LEFT_PARENTHESIS conteudo COMMA conteudo RIGHT_PARENTHESIS
+                | OPERATOR_BAG LEFT_PARENTHESIS INTEGER RIGHT_PARENTHESIS
+                | OPERATOR_BAG LEFT_PARENTHESIS conteudo RIGHT_PARENTHESIS
+                ;
+
+conteudo    : LEFT_BRACKET RIGHT_BRACKET
+            | LEFT_BRACKET LEFT_PARENTHESIS INTEGER COMMA INTEGER RIGHT_PARENTHESIS conteudo_integer_cont RIGHT_BRACKET
+            | LEFT_BRACKET LEFT_PARENTHESIS REAL COMMA INTEGER RIGHT_PARENTHESIS conteudo_real_cont RIGHT_BRACKET
+            ;
+
+conteudo_integer_cont   : COMMA LEFT_PARENTHESIS INTEGER COMMA INTEGER RIGHT_PARENTHESIS conteudo_integer_cont
+                        | EMPTY
+                        ;
+
+conteudo_real_cont  : COMMA LEFT_PARENTHESIS REAL COMMA INTEGER RIGHT_PARENTHESIS conteudo_real_cont
+                    | EMPTY
+                    ;
+
 terminals
 
 KEYWORD : /KEYWORD/;
@@ -67,3 +161,20 @@ PROCEDURE: /PROCEDURE/;
 FUNCTION: /FUNCTION/;
 LEFT_PARENTHESIS: /LEFT_PARENTHESIS/;
 RIGHT_PARENTHESIS: /RIGHT_PARENTHESIS/;
+LEFT_BRACKET: /LEFT_PARENTHESIS/;
+RIGHT_BRACKET: /RIGHT_PARENTHESIS/;
+ASSIGN: /ASSIGN/;
+OPERATOR: /OPERATOR/;
+OPERATOR_BAG: /OPERATOR_BAG/;
+RELATION: /RELATION/;
+INTEGER: /INTEGER/;
+REAL: /REAL/;
+READ: /READ/;
+WRITE: /WRITE/;
+FOR: /FOR/;
+REPEAT: /REPEAT/;
+WHILE: /WHILE/;
+IF: /IF/;
+
+
+

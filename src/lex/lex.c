@@ -11,15 +11,9 @@ const char *keywords[] = {
     "real",
     "bagOfInteger",
     "bagOfReal",
-    "read",
-    "write",
-    "for",
     "to",
     "do",
-    "repeat",
     "until",
-    "while",
-    "if",
     "then",
     "else"
 };
@@ -36,16 +30,20 @@ const char *tokenTypeNames[] = {
     "FUNCTION",
     "LEFT_PARENTHESIS",
     "RIGHT_PARENTHESIS",
-    "EMPTY",
-    "STOP",
     "LEFT_BRACKET",
     "RIGHT_BRACKET",
-    "ASSIGNMENT",
+    "ASSIGN",
     "OPERATOR",
+    "OPERATOR_BAG",
     "RELATION",
-    "BAG_OPERATOR",
     "INTEGER",
     "REAL",
+    "READ",
+    "WRITE",
+    "FOR",
+    "REPEAT",
+    "WHILE",
+    "IF",
     "TOKEN_ERROR"
 };
 
@@ -216,7 +214,7 @@ Token nextToken(FILE *file)
                 if (readChar == '=')
                 {
                     lexeme[lexSize++] = readChar;
-                    return createToken(*lexeme == ':' ? ASSIGNMENT : RELATION, lexeme, lexSize);
+                    return createToken(*lexeme == ':' ? ASSIGN : RELATION, lexeme, lexSize);
                 }
                 else
                 {
@@ -235,15 +233,15 @@ Token nextToken(FILE *file)
                 rollBack();
                 Token token = createToken(IDENTIFIER, lexeme, lexSize);
                 if (strcmp(token.value, "Union") == 0)
-                    token.type = BAG_OPERATOR;
+                    token.type = OPERATOR_BAG;
                 else if (strcmp(token.value, "Intersection") == 0)
-                    token.type = BAG_OPERATOR;
+                    token.type = OPERATOR_BAG;
                 else if (strcmp((token.value), "Pos") == 0)
-                    token.type = BAG_OPERATOR;
+                    token.type = OPERATOR_BAG;
                 else if (strcmp((token.value), "Element") == 0)
-                    token.type = BAG_OPERATOR;
+                    token.type = OPERATOR_BAG;
                 else if (strcmp((token.value), "Quantity") == 0)
-                    token.type = BAG_OPERATOR;
+                    token.type = OPERATOR_BAG;
                 else if (strcmp(token.value, "begin") == 0)
                     token.type = BEGIN;
                 else if (strcmp(token.value, "end") == 0)
@@ -252,6 +250,18 @@ Token nextToken(FILE *file)
                     token.type = PROCEDURE;
                 else if (strcmp(token.value, "function") == 0)
                     token.type = FUNCTION;
+                else if (strcmp(token.value, "read") == 0)
+                    token.type = READ;
+                else if (strcmp(token.value, "write") == 0)
+                    token.type = WRITE;
+                else if (strcmp(token.value, "for") == 0)
+                    token.type = FOR;
+                else if (strcmp(token.value, "repeat") == 0)
+                    token.type = REPEAT;
+                else if (strcmp(token.value, "while") == 0)
+                    token.type = WHILE;
+                else if (strcmp(token.value, "if") == 0)
+                    token.type = IF;
                 else if (isKeyword(token.value))
                     token.type = KEYWORD;
                 return token;
