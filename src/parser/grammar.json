@@ -4799,8 +4799,8 @@
         "RIGHT_PARENTHESIS",
         [
           {
-            "action": 1,
-            "prod_id": 49
+            "action": 0,
+            "state_id": 158
           }
         ]
       ]
@@ -4818,8 +4818,8 @@
         "RIGHT_PARENTHESIS",
         [
           {
-            "action": 1,
-            "prod_id": 50
+            "action": 0,
+            "state_id": 159
           }
         ]
       ]
@@ -4838,7 +4838,7 @@
         [
           {
             "action": 0,
-            "state_id": 158
+            "state_id": 160
           }
         ]
       ]
@@ -4857,7 +4857,7 @@
         [
           {
             "action": 0,
-            "state_id": 159
+            "state_id": 161
           }
         ]
       ]
@@ -4876,7 +4876,7 @@
         [
           {
             "action": 0,
-            "state_id": 160
+            "state_id": 162
           }
         ]
       ]
@@ -4895,7 +4895,7 @@
         [
           {
             "action": 0,
-            "state_id": 161
+            "state_id": 163
           }
         ]
       ]
@@ -4914,7 +4914,7 @@
         [
           {
             "action": 0,
-            "state_id": 162
+            "state_id": 164
           }
         ]
       ]
@@ -4933,7 +4933,7 @@
         [
           {
             "action": 0,
-            "state_id": 163
+            "state_id": 165
           }
         ]
       ]
@@ -5052,7 +5052,7 @@
     "gotos": [
       [
         "sentencas",
-        164
+        166
       ],
       [
         "comando",
@@ -5088,6 +5088,44 @@
   {
     "actions": [
       [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 49
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 158,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 50
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 159,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
         "SEMICOLON",
         [
           {
@@ -5101,7 +5139,7 @@
         [
           {
             "action": 0,
-            "state_id": 166
+            "state_id": 168
           }
         ]
       ]
@@ -5113,10 +5151,10 @@
     "gotos": [
       [
         "pfalsa",
-        165
+        167
       ]
     ],
-    "state_id": 158,
+    "state_id": 160,
     "symbol": "END"
   },
   {
@@ -5165,7 +5203,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 159,
+    "state_id": 161,
     "symbol": "RIGHT_PARENTHESIS"
   },
   {
@@ -5175,7 +5213,7 @@
         [
           {
             "action": 0,
-            "state_id": 167
+            "state_id": 169
           }
         ]
       ]
@@ -5184,7 +5222,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 160,
+    "state_id": 162,
     "symbol": "COMMA"
   },
   {
@@ -5194,7 +5232,7 @@
         [
           {
             "action": 0,
-            "state_id": 168
+            "state_id": 170
           }
         ]
       ]
@@ -5203,7 +5241,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 161,
+    "state_id": 163,
     "symbol": "COMMA"
   },
   {
@@ -5252,7 +5290,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 162,
+    "state_id": 164,
     "symbol": "RIGHT_PARENTHESIS"
   },
   {
@@ -5303,10 +5341,10 @@
     "gotos": [
       [
         "operando",
-        169
+        171
       ]
     ],
-    "state_id": 163,
+    "state_id": 165,
     "symbol": "COMMA"
   },
   {
@@ -5316,7 +5354,7 @@
         [
           {
             "action": 0,
-            "state_id": 170
+            "state_id": 172
           }
         ]
       ]
@@ -5325,7 +5363,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 164,
+    "state_id": 166,
     "symbol": "sentencas"
   },
   {
@@ -5344,51 +5382,13 @@
       false
     ],
     "gotos": [],
-    "state_id": 165,
+    "state_id": 167,
     "symbol": "pfalsa"
   },
   {
     "actions": [
       [
         "BEGIN",
-        [
-          {
-            "action": 0,
-            "state_id": 171
-          }
-        ]
-      ]
-    ],
-    "finish_flags": [
-      false
-    ],
-    "gotos": [],
-    "state_id": 166,
-    "symbol": "KEYWORD"
-  },
-  {
-    "actions": [
-      [
-        "RIGHT_PARENTHESIS",
-        [
-          {
-            "action": 0,
-            "state_id": 172
-          }
-        ]
-      ]
-    ],
-    "finish_flags": [
-      false
-    ],
-    "gotos": [],
-    "state_id": 167,
-    "symbol": "INTEGER"
-  },
-  {
-    "actions": [
-      [
-        "RIGHT_PARENTHESIS",
         [
           {
             "action": 0,
@@ -5402,7 +5402,7 @@
     ],
     "gotos": [],
     "state_id": 168,
-    "symbol": "INTEGER"
+    "symbol": "KEYWORD"
   },
   {
     "actions": [
@@ -5421,6 +5421,44 @@
     ],
     "gotos": [],
     "state_id": 169,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 175
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 170,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 176
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 171,
     "symbol": "operando"
   },
   {
@@ -5439,7 +5477,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 170,
+    "state_id": 172,
     "symbol": "END"
   },
   {
@@ -5530,7 +5568,7 @@
     "gotos": [
       [
         "sentencas",
-        175
+        177
       ],
       [
         "comando",
@@ -5541,7 +5579,7 @@
         33
       ]
     ],
-    "state_id": 171,
+    "state_id": 173,
     "symbol": "BEGIN"
   },
   {
@@ -5552,40 +5590,6 @@
           {
             "action": 1,
             "prod_id": 72
-          }
-        ]
-      ],
-      [
-        "COMMA",
-        [
-          {
-            "action": 0,
-            "state_id": 177
-          }
-        ]
-      ]
-    ],
-    "finish_flags": [
-      false,
-      false
-    ],
-    "gotos": [
-      [
-        "conteudo_integer_cont",
-        176
-      ]
-    ],
-    "state_id": 172,
-    "symbol": "RIGHT_PARENTHESIS"
-  },
-  {
-    "actions": [
-      [
-        "RIGHT_BRACKET",
-        [
-          {
-            "action": 1,
-            "prod_id": 74
           }
         ]
       ],
@@ -5605,11 +5609,45 @@
     ],
     "gotos": [
       [
-        "conteudo_real_cont",
+        "conteudo_integer_cont",
         178
       ]
     ],
-    "state_id": 173,
+    "state_id": 174,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 1,
+            "prod_id": 74
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 181
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "conteudo_real_cont",
+        180
+      ]
+    ],
+    "state_id": 175,
     "symbol": "RIGHT_PARENTHESIS"
   },
   {
@@ -5638,51 +5676,13 @@
       false
     ],
     "gotos": [],
-    "state_id": 174,
+    "state_id": 176,
     "symbol": "RIGHT_PARENTHESIS"
   },
   {
     "actions": [
       [
         "END",
-        [
-          {
-            "action": 0,
-            "state_id": 180
-          }
-        ]
-      ]
-    ],
-    "finish_flags": [
-      false
-    ],
-    "gotos": [],
-    "state_id": 175,
-    "symbol": "sentencas"
-  },
-  {
-    "actions": [
-      [
-        "RIGHT_BRACKET",
-        [
-          {
-            "action": 0,
-            "state_id": 181
-          }
-        ]
-      ]
-    ],
-    "finish_flags": [
-      false
-    ],
-    "gotos": [],
-    "state_id": 176,
-    "symbol": "conteudo_integer_cont"
-  },
-  {
-    "actions": [
-      [
-        "LEFT_PARENTHESIS",
         [
           {
             "action": 0,
@@ -5696,7 +5696,7 @@
     ],
     "gotos": [],
     "state_id": 177,
-    "symbol": "COMMA"
+    "symbol": "sentencas"
   },
   {
     "actions": [
@@ -5715,7 +5715,7 @@
     ],
     "gotos": [],
     "state_id": 178,
-    "symbol": "conteudo_real_cont"
+    "symbol": "conteudo_integer_cont"
   },
   {
     "actions": [
@@ -5739,6 +5739,44 @@
   {
     "actions": [
       [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 0,
+            "state_id": 185
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 180,
+    "symbol": "conteudo_real_cont"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 186
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 181,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
         "SEMICOLON",
         [
           {
@@ -5752,7 +5790,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 180,
+    "state_id": 182,
     "symbol": "END"
   },
   {
@@ -5781,7 +5819,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 181,
+    "state_id": 183,
     "symbol": "RIGHT_BRACKET"
   },
   {
@@ -5791,55 +5829,7 @@
         [
           {
             "action": 0,
-            "state_id": 185
-          }
-        ]
-      ]
-    ],
-    "finish_flags": [
-      false
-    ],
-    "gotos": [],
-    "state_id": 182,
-    "symbol": "LEFT_PARENTHESIS"
-  },
-  {
-    "actions": [
-      [
-        "RIGHT_PARENTHESIS",
-        [
-          {
-            "action": 1,
-            "prod_id": 70
-          }
-        ]
-      ],
-      [
-        "COMMA",
-        [
-          {
-            "action": 1,
-            "prod_id": 70
-          }
-        ]
-      ]
-    ],
-    "finish_flags": [
-      false,
-      false
-    ],
-    "gotos": [],
-    "state_id": 183,
-    "symbol": "RIGHT_BRACKET"
-  },
-  {
-    "actions": [
-      [
-        "REAL",
-        [
-          {
-            "action": 0,
-            "state_id": 186
+            "state_id": 187
           }
         ]
       ]
@@ -5854,26 +5844,36 @@
   {
     "actions": [
       [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 70
+          }
+        ]
+      ],
+      [
         "COMMA",
         [
           {
-            "action": 0,
-            "state_id": 187
+            "action": 1,
+            "prod_id": 70
           }
         ]
       ]
     ],
     "finish_flags": [
+      false,
       false
     ],
     "gotos": [],
     "state_id": 185,
-    "symbol": "INTEGER"
+    "symbol": "RIGHT_BRACKET"
   },
   {
     "actions": [
       [
-        "COMMA",
+        "REAL",
         [
           {
             "action": 0,
@@ -5887,12 +5887,12 @@
     ],
     "gotos": [],
     "state_id": 186,
-    "symbol": "REAL"
+    "symbol": "LEFT_PARENTHESIS"
   },
   {
     "actions": [
       [
-        "INTEGER",
+        "COMMA",
         [
           {
             "action": 0,
@@ -5906,12 +5906,12 @@
     ],
     "gotos": [],
     "state_id": 187,
-    "symbol": "COMMA"
+    "symbol": "INTEGER"
   },
   {
     "actions": [
       [
-        "INTEGER",
+        "COMMA",
         [
           {
             "action": 0,
@@ -5925,12 +5925,12 @@
     ],
     "gotos": [],
     "state_id": 188,
-    "symbol": "COMMA"
+    "symbol": "REAL"
   },
   {
     "actions": [
       [
-        "RIGHT_PARENTHESIS",
+        "INTEGER",
         [
           {
             "action": 0,
@@ -5944,12 +5944,12 @@
     ],
     "gotos": [],
     "state_id": 189,
-    "symbol": "INTEGER"
+    "symbol": "COMMA"
   },
   {
     "actions": [
       [
-        "RIGHT_PARENTHESIS",
+        "INTEGER",
         [
           {
             "action": 0,
@@ -5963,6 +5963,44 @@
     ],
     "gotos": [],
     "state_id": 190,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 193
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 191,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 194
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 192,
     "symbol": "INTEGER"
   },
   {
@@ -5973,40 +6011,6 @@
           {
             "action": 1,
             "prod_id": 72
-          }
-        ]
-      ],
-      [
-        "COMMA",
-        [
-          {
-            "action": 0,
-            "state_id": 177
-          }
-        ]
-      ]
-    ],
-    "finish_flags": [
-      false,
-      false
-    ],
-    "gotos": [
-      [
-        "conteudo_integer_cont",
-        193
-      ]
-    ],
-    "state_id": 191,
-    "symbol": "RIGHT_PARENTHESIS"
-  },
-  {
-    "actions": [
-      [
-        "RIGHT_BRACKET",
-        [
-          {
-            "action": 1,
-            "prod_id": 74
           }
         ]
       ],
@@ -6026,11 +6030,45 @@
     ],
     "gotos": [
       [
-        "conteudo_real_cont",
-        194
+        "conteudo_integer_cont",
+        195
       ]
     ],
-    "state_id": 192,
+    "state_id": 193,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 1,
+            "prod_id": 74
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 181
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "conteudo_real_cont",
+        196
+      ]
+    ],
+    "state_id": 194,
     "symbol": "RIGHT_PARENTHESIS"
   },
   {
@@ -6049,7 +6087,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 193,
+    "state_id": 195,
     "symbol": "conteudo_integer_cont"
   },
   {
@@ -6068,7 +6106,7 @@
       false
     ],
     "gotos": [],
-    "state_id": 194,
+    "state_id": 196,
     "symbol": "conteudo_real_cont"
   }
 ]
