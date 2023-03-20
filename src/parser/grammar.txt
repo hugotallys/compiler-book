@@ -6,7 +6,7 @@ declara : KEYWORD dvar mais_dc | EMPTY;
 
 mais_dc : SEMICOLON cont_dc;
 
-cont_dc : dvar mais_dc | EMPTY;
+cont_dc : KEYWORD dvar mais_dc | EMPTY;
 
 dvar : variaveis COLON KEYWORD;
 

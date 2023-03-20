@@ -10,7 +10,7 @@
 
 <mais_dc>               ::= ; <cont_dc>
 
-<cont_dc>               ::= <dvar> <mais_dc>
+<cont_dc>               ::= var <dvar> <mais_dc>
                           | <empty>
 
 <dvar>                  ::= <variaveis> : <tipo_var>
