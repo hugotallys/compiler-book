@@ -102,8 +102,8 @@ cont_lista_arg  : COMMA lista_arg
                 | EMPTY
                 ;
 
-condicao    : RELATION LEFT_PARENTHESIS expressao_num COMMA expressao_num
-            | RELATION LEFT_PARENTHESIS expressao_bag COMMA expressao_bag
+condicao    : RELATION LEFT_PARENTHESIS expressao_num COMMA expressao_num RIGHT_PARENTHESIS
+            | RELATION LEFT_PARENTHESIS expressao_bag COMMA expressao_bag RIGHT_PARENTHESIS
             ;
 
 pfalsa      : KEYWORD BEGIN sentencas END
