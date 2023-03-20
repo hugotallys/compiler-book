@@ -1,5 +1,7 @@
 program myProgram;
 
+var a: integer; var b : real;
+
 begin
 
 end
