@@ -1,4 +1,4 @@
-program myProgram;
+program factorialCalculator;
 
 var n : integer;
 
@@ -10,5 +10,6 @@ begin
 end;
 
 begin
+    read(n);
     write(n);
 end
