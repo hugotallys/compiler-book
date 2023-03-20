@@ -29,22 +29,8 @@ def get_action_table_entry(action_value):
 
 if __name__ == "__main__":
 
-    with open('grammar.txt', 'r') as file:
+    with open('grammar.pg', 'r') as file:
         grammar = file.read()
-
-    # re to capture any text beetween %{ and }% and store under patterns
-    # patterns = re.findall(r"%\{(.+?)}%", grammar, re.DOTALL)[0].strip('\n').strip(' ')
-    # patterns = re.findall(r"/(.+?)/ ([a-zA-Z_]+)", patterns, re.DOTALL)
-
-    # grammar = re.sub(r"::=", ':', grammar)
-    # grammar = re.sub(r"[<>]", "", grammar)
-    # grammar = re.sub(r"\n\n", ";\n\n", grammar)
-
-    # remove patterns from grammar
-    # grammar = re.sub(r"%\{(.+?)}%", "", grammar, flags=re.DOTALL)
-
-    # for pattern, label in patterns:
-    #     grammar = re.sub(pattern, "'" + label + "'", grammar)
 
     g = Grammar.from_string(grammar)
 

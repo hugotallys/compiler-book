@@ -1,5 +1,5 @@
 debug:
-	pglr --debug compile grammar.txt
+	pglr --debug compile grammar.pg
 
 clean:
 	rm grammar.pg
