@@ -2,6 +2,18 @@ program myProgram;
 
 var a: integer; var b : real;
 
+procedure poo(bag : bagOfInteger; i : integer);
+
+begin
+
+end;
+
+function foo(bag : bagOfInteger; i : integer) : integer;
+
+begin
+
+end;
+
 begin
 
 end

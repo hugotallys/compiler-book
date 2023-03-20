@@ -187,3 +187,8 @@
 ```
 
 ## Bag data structure
+
+## Syntatic grammar
+
+1. Remove productions that generate only terminals
+2. Replace those production by a terminal itself

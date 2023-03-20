@@ -11,8 +11,6 @@ const char *keywords[] = {
     "real",
     "bagOfInteger",
     "bagOfReal",
-    "procedure",
-    "function",
     "read",
     "write",
     "for",
@@ -34,10 +32,12 @@ const char *tokenTypeNames[] = {
     "COLON",
     "BEGIN",
     "END",
-    "EMPTY",
-    "STOP",
+    "PROCEDURE",
+    "FUNCTION",
     "LEFT_PARENTHESIS",
     "RIGHT_PARENTHESIS",
+    "EMPTY",
+    "STOP",
     "LEFT_BRACKET",
     "RIGHT_BRACKET",
     "ASSIGNMENT",
@@ -248,6 +248,10 @@ Token nextToken(FILE *file)
                     token.type = BEGIN;
                 else if (strcmp(token.value, "end") == 0)
                     token.type = END;
+                else if (strcmp(token.value, "procedure") == 0)
+                    token.type = PROCEDURE;
+                else if (strcmp(token.value, "function") == 0)
+                    token.type = FUNCTION;
                 else if (isKeyword(token.value))
                     token.type = KEYWORD;
                 return token;

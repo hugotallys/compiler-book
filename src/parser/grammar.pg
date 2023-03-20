@@ -1,0 +1,69 @@
+programa    : KEYWORD IDENTIFIER SEMICOLON corpo
+            ;
+
+corpo   : declara rotina BEGIN END
+        ;
+
+declara : KEYWORD dvar mais_dc
+        | EMPTY
+        ;
+
+mais_dc : SEMICOLON cont_dc
+        ;
+
+cont_dc : KEYWORD dvar mais_dc
+        | EMPTY
+        ;
+
+dvar    : variaveis COLON KEYWORD
+        ;
+
+variaveis   : IDENTIFIER mais_var
+            ;
+
+mais_var    : COMMA variaveis
+            | EMPTY
+            ;
+
+rotina  : procedimento
+        | funcao
+        | EMPTY
+        ;
+
+procedimento    : PROCEDURE IDENTIFIER parametros SEMICOLON corpo SEMICOLON rotina
+                ;
+
+funcao  : FUNCTION IDENTIFIER parametros COLON KEYWORD SEMICOLON corpo SEMICOLON rotina
+        ;
+
+parametros  : LEFT_PARENTHESIS lista_parametros RIGHT_PARENTHESIS
+            | EMPTY
+            ;
+
+lista_parametros    : lista_id COLON KEYWORD cont_lista_par
+                    ;
+
+cont_lista_par  : SEMICOLON lista_parametros
+                | EMPTY
+                ;
+
+lista_id    :   IDENTIFIER  cont_lista_id
+            ;
+
+cont_lista_id   : COMMA lista_id
+                | EMPTY
+                ;
+
+terminals
+
+KEYWORD : /KEYWORD/;
+IDENTIFIER: /IDENTIFIER/;
+SEMICOLON: /SEMICOLON/;
+COMMA: /COMMA/;
+COLON: /COLON/;
+BEGIN: /BEGIN/;
+END: /END/;
+PROCEDURE: /PROCEDURE/;
+FUNCTION: /FUNCTION/;
+LEFT_PARENTHESIS: /LEFT_PARENTHESIS/;
+RIGHT_PARENTHESIS: /RIGHT_PARENTHESIS/;
