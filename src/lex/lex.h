@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define N 4096
-#define MAX_LEN 64
+#define MAX_LEN 16
 #define true 1
 #define false 0
 
@@ -58,5 +58,7 @@ int rollBack();
 Token nextToken(FILE *file);
 
 void printToken(Token token);
+
+const char* getTokenTypeString(TokenType type);
 
 #endif

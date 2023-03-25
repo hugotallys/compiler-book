@@ -44,6 +44,8 @@ const char *tokenTypeNames[] = {
     "REPEAT",
     "WHILE",
     "IF",
+    "EMPTY",
+    "STOP",
     "TOKEN_ERROR"
 };
 
@@ -228,19 +230,23 @@ Token nextToken(FILE *file)
                 while (isLetter(readChar) || isDigit(readChar))
                 {
                     lexeme[lexSize++] = readChar;
+                    if (lexSize == MAX_LEN)
+                    {
+                        lexSize = lexSize - 1;
+                        rollBack();
+                        return createToken(TOKEN_ERROR, lexeme, lexSize);
+                    }
                     readChar = nextChar(file);
                 }
                 rollBack();
                 Token token = createToken(IDENTIFIER, lexeme, lexSize);
-                if (strcmp(token.value, "Union") == 0)
-                    token.type = OPERATOR_BAG;
-                else if (strcmp(token.value, "Intersection") == 0)
-                    token.type = OPERATOR_BAG;
-                else if (strcmp((token.value), "Pos") == 0)
-                    token.type = OPERATOR_BAG;
-                else if (strcmp((token.value), "Element") == 0)
-                    token.type = OPERATOR_BAG;
-                else if (strcmp((token.value), "Quantity") == 0)
+                if (
+                        strcmp(token.value, "Union") == 0
+                        || strcmp(token.value, "Intersection") == 0
+                        || strcmp(token.value, "Pos") == 0
+                        || strcmp(token.value, "Element") == 0
+                        || strcmp(token.value, "Quantity") == 0
+                    )
                     token.type = OPERATOR_BAG;
                 else if (strcmp(token.value, "begin") == 0)
                     token.type = BEGIN;
@@ -316,4 +322,9 @@ Token nextToken(FILE *file)
 void printToken(Token token)
 {
     printf("%-15s %s\n", token.value, tokenTypeNames[token.type]);
+}
+
+const char* getTokenTypeString(TokenType type)
+{
+    return tokenTypeNames[type];
 }
