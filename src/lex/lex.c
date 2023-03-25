@@ -6,45 +6,47 @@ char buffer[2 * N];
 
 const char *keywords[] = {
     "program",
-    "begin",
-    "end",
     "var",
     "integer",
     "real",
     "bagOfInteger",
     "bagOfReal",
-    "procedure",
-    "function",
-    "read",
-    "write",
-    "for",
     "to",
     "do",
-    "repeat",
     "until",
-    "while",
-    "if",
     "then",
     "else"
 };
 
 const char *tokenTypeNames[] = {
-    "COLON",
+    "KEYWORD",
+    "IDENTIFIER",
     "SEMICOLON",
     "COMMA",
+    "COLON",
+    "BEGIN",
+    "END",
+    "PROCEDURE",
+    "FUNCTION",
     "LEFT_PARENTHESIS",
     "RIGHT_PARENTHESIS",
     "LEFT_BRACKET",
     "RIGHT_BRACKET",
-    "ASSIGNMENT",
+    "ASSIGN",
     "OPERATOR",
+    "OPERATOR_BAG",
     "RELATION",
-    "BAG_OPERATOR",
     "INTEGER",
     "REAL",
-    "IDENTIFIER",
-    "KEYWORD",
-    "ERROR"
+    "READ",
+    "WRITE",
+    "FOR",
+    "REPEAT",
+    "WHILE",
+    "IF",
+    "EMPTY",
+    "STOP",
+    "TOKEN_ERROR"
 };
 
 static inline int isLetter(char c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
@@ -214,7 +216,7 @@ Token nextToken(FILE *file)
                 if (readChar == '=')
                 {
                     lexeme[lexSize++] = readChar;
-                    return createToken(*lexeme == ':' ? ASSIGNMENT : RELATION, lexeme, lexSize);
+                    return createToken(*lexeme == ':' ? ASSIGN : RELATION, lexeme, lexSize);
                 }
                 else
                 {
@@ -228,20 +230,44 @@ Token nextToken(FILE *file)
                 while (isLetter(readChar) || isDigit(readChar))
                 {
                     lexeme[lexSize++] = readChar;
+                    if (lexSize == MAX_LEN)
+                    {
+                        lexSize = lexSize - 1;
+                        rollBack();
+                        return createToken(TOKEN_ERROR, lexeme, lexSize);
+                    }
                     readChar = nextChar(file);
                 }
                 rollBack();
                 Token token = createToken(IDENTIFIER, lexeme, lexSize);
-                if (strcmp(token.value, "Union") == 0)
-                    token.type = BAG_OPERATOR;
-                else if (strcmp(token.value, "Intersection") == 0)
-                    token.type = BAG_OPERATOR;
-                else if (strcmp((token.value), "Pos") == 0)
-                    token.type = BAG_OPERATOR;
-                else if (strcmp((token.value), "Element") == 0)
-                    token.type = BAG_OPERATOR;
-                else if (strcmp((token.value), "Quantity") == 0)
-                    token.type = BAG_OPERATOR;
+                if (
+                        strcmp(token.value, "Union") == 0
+                        || strcmp(token.value, "Intersection") == 0
+                        || strcmp(token.value, "Pos") == 0
+                        || strcmp(token.value, "Element") == 0
+                        || strcmp(token.value, "Quantity") == 0
+                    )
+                    token.type = OPERATOR_BAG;
+                else if (strcmp(token.value, "begin") == 0)
+                    token.type = BEGIN;
+                else if (strcmp(token.value, "end") == 0)
+                    token.type = END;
+                else if (strcmp(token.value, "procedure") == 0)
+                    token.type = PROCEDURE;
+                else if (strcmp(token.value, "function") == 0)
+                    token.type = FUNCTION;
+                else if (strcmp(token.value, "read") == 0)
+                    token.type = READ;
+                else if (strcmp(token.value, "write") == 0)
+                    token.type = WRITE;
+                else if (strcmp(token.value, "for") == 0)
+                    token.type = FOR;
+                else if (strcmp(token.value, "repeat") == 0)
+                    token.type = REPEAT;
+                else if (strcmp(token.value, "while") == 0)
+                    token.type = WHILE;
+                else if (strcmp(token.value, "if") == 0)
+                    token.type = IF;
                 else if (isKeyword(token.value))
                     token.type = KEYWORD;
                 return token;
@@ -285,7 +311,7 @@ Token nextToken(FILE *file)
                 }
             }
             else
-                return createToken(ERROR, lexeme, lexSize);
+                return createToken(TOKEN_ERROR, lexeme, lexSize);
         }
         else
             lexSize = 0;
@@ -296,4 +322,9 @@ Token nextToken(FILE *file)
 void printToken(Token token)
 {
     printf("%-15s %s\n", token.value, tokenTypeNames[token.type]);
+}
+
+const char* getTokenTypeString(TokenType type)
+{
+    return tokenTypeNames[type];
 }

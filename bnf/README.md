@@ -10,7 +10,7 @@
 
 <mais_dc>               ::= ; <cont_dc>
 
-<cont_dc>               ::= <dvar> <mais_dc>
+<cont_dc>               ::= var <dvar> <mais_dc>
                           | <empty>
 
 <dvar>                  ::= <variaveis> : <tipo_var>
@@ -123,7 +123,8 @@
                           | <integer_num>
                           | <real_num> 
 
-<expressao_bag>         ::= <opBag1> ( <conteudo> , <conteudo> )
+<expressao_bag>         ::= <conteudo>
+                          | <opBag1> ( <conteudo> , <conteudo> )
                           | Pos ( <integer_num> )
                           | <opBag2> ( <conteudo> )
 
@@ -187,3 +188,8 @@
 ```
 
 ## Bag data structure
+
+## Syntatic grammar
+
+1. Remove productions that generate only terminals
+2. Replace those production by a terminal itself

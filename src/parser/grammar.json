@@ -1,0 +1,6112 @@
+[
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 2
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "programa",
+        1
+      ]
+    ],
+    "state_id": 0,
+    "symbol": "S'"
+  },
+  {
+    "actions": [
+      [
+        "STOP",
+        [
+          {
+            "action": 2
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 1,
+    "symbol": "programa"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 3
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 2,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 4
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 3,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 7
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "corpo",
+        5
+      ],
+      [
+        "declara",
+        6
+      ]
+    ],
+    "state_id": 4,
+    "symbol": "SEMICOLON"
+  },
+  {
+    "actions": [
+      [
+        "STOP",
+        [
+          {
+            "action": 1,
+            "prod_id": 1
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 5,
+    "symbol": "corpo"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 0,
+            "state_id": 12
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 0,
+            "state_id": 11
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 14
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "rotina",
+        8
+      ],
+      [
+        "procedimento",
+        9
+      ],
+      [
+        "funcao",
+        10
+      ]
+    ],
+    "state_id": 6,
+    "symbol": "declara"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 15
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "dvar",
+        13
+      ],
+      [
+        "variaveis",
+        14
+      ]
+    ],
+    "state_id": 7,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 0,
+            "state_id": 16
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 8,
+    "symbol": "rotina"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 12
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 9,
+    "symbol": "procedimento"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 13
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 10,
+    "symbol": "funcao"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 17
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 11,
+    "symbol": "FUNCTION"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 18
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 12,
+    "symbol": "PROCEDURE"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 20
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "mais_dc",
+        19
+      ]
+    ],
+    "state_id": 13,
+    "symbol": "dvar"
+  },
+  {
+    "actions": [
+      [
+        "COLON",
+        [
+          {
+            "action": 0,
+            "state_id": 21
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 14,
+    "symbol": "variaveis"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 23
+          }
+        ]
+      ],
+      [
+        "COLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 11
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "mais_var",
+        22
+      ]
+    ],
+    "state_id": 15,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "WRITE",
+        [
+          {
+            "action": 0,
+            "state_id": 27
+          }
+        ]
+      ],
+      [
+        "WHILE",
+        [
+          {
+            "action": 0,
+            "state_id": 30
+          }
+        ]
+      ],
+      [
+        "REPEAT",
+        [
+          {
+            "action": 0,
+            "state_id": 29
+          }
+        ]
+      ],
+      [
+        "READ",
+        [
+          {
+            "action": 0,
+            "state_id": 26
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ],
+      [
+        "IF",
+        [
+          {
+            "action": 0,
+            "state_id": 31
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 32
+          }
+        ]
+      ],
+      [
+        "FOR",
+        [
+          {
+            "action": 0,
+            "state_id": 28
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "sentencas",
+        24
+      ],
+      [
+        "comando",
+        25
+      ],
+      [
+        "chamada_procedimento",
+        33
+      ]
+    ],
+    "state_id": 16,
+    "symbol": "BEGIN"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 18
+          }
+        ]
+      ],
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 35
+          }
+        ]
+      ],
+      [
+        "COLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 18
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "parametros",
+        34
+      ]
+    ],
+    "state_id": 17,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 18
+          }
+        ]
+      ],
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 35
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "parametros",
+        36
+      ]
+    ],
+    "state_id": 18,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 1,
+            "prod_id": 3
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 1,
+            "prod_id": 3
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 3
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 19,
+    "symbol": "mais_dc"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 1,
+            "prod_id": 7
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 38
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 1,
+            "prod_id": 7
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 7
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "cont_dc",
+        37
+      ]
+    ],
+    "state_id": 20,
+    "symbol": "SEMICOLON"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 39
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 21,
+    "symbol": "COLON"
+  },
+  {
+    "actions": [
+      [
+        "COLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 9
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 22,
+    "symbol": "mais_var"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 15
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "variaveis",
+        40
+      ]
+    ],
+    "state_id": 23,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "END",
+        [
+          {
+            "action": 0,
+            "state_id": 41
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 24,
+    "symbol": "sentencas"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 43
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "mais_sentencas",
+        42
+      ]
+    ],
+    "state_id": 25,
+    "symbol": "comando"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 44
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 26,
+    "symbol": "READ"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 45
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 27,
+    "symbol": "WRITE"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 46
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 28,
+    "symbol": "FOR"
+  },
+  {
+    "actions": [
+      [
+        "WRITE",
+        [
+          {
+            "action": 0,
+            "state_id": 27
+          }
+        ]
+      ],
+      [
+        "WHILE",
+        [
+          {
+            "action": 0,
+            "state_id": 30
+          }
+        ]
+      ],
+      [
+        "REPEAT",
+        [
+          {
+            "action": 0,
+            "state_id": 29
+          }
+        ]
+      ],
+      [
+        "READ",
+        [
+          {
+            "action": 0,
+            "state_id": 26
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ],
+      [
+        "IF",
+        [
+          {
+            "action": 0,
+            "state_id": 31
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 32
+          }
+        ]
+      ],
+      [
+        "FOR",
+        [
+          {
+            "action": 0,
+            "state_id": 28
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "sentencas",
+        47
+      ],
+      [
+        "comando",
+        25
+      ],
+      [
+        "chamada_procedimento",
+        33
+      ]
+    ],
+    "state_id": 29,
+    "symbol": "REPEAT"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 48
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 30,
+    "symbol": "WHILE"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 49
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 31,
+    "symbol": "IF"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 45
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 45
+          }
+        ]
+      ],
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 52
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 45
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 45
+          }
+        ]
+      ],
+      [
+        "ASSIGN",
+        [
+          {
+            "action": 0,
+            "state_id": 50
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "argumentos",
+        51
+      ]
+    ],
+    "state_id": 32,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 42
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 33,
+    "symbol": "chamada_procedimento"
+  },
+  {
+    "actions": [
+      [
+        "COLON",
+        [
+          {
+            "action": 0,
+            "state_id": 53
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 34,
+    "symbol": "parametros"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 56
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "lista_parametros",
+        54
+      ],
+      [
+        "lista_id",
+        55
+      ]
+    ],
+    "state_id": 35,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 57
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 36,
+    "symbol": "parametros"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 1,
+            "prod_id": 5
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 1,
+            "prod_id": 5
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 5
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 37,
+    "symbol": "cont_dc"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 15
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "dvar",
+        58
+      ],
+      [
+        "variaveis",
+        14
+      ]
+    ],
+    "state_id": 38,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 8
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 39,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "COLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 10
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 40,
+    "symbol": "variaveis"
+  },
+  {
+    "actions": [
+      [
+        "STOP",
+        [
+          {
+            "action": 1,
+            "prod_id": 2
+          }
+        ]
+      ],
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 2
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 41,
+    "symbol": "END"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 25
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 25
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 42,
+    "symbol": "mais_sentencas"
+  },
+  {
+    "actions": [
+      [
+        "WRITE",
+        [
+          {
+            "action": 0,
+            "state_id": 27
+          }
+        ]
+      ],
+      [
+        "WHILE",
+        [
+          {
+            "action": 0,
+            "state_id": 30
+          }
+        ]
+      ],
+      [
+        "REPEAT",
+        [
+          {
+            "action": 0,
+            "state_id": 29
+          }
+        ]
+      ],
+      [
+        "READ",
+        [
+          {
+            "action": 0,
+            "state_id": 26
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ],
+      [
+        "IF",
+        [
+          {
+            "action": 0,
+            "state_id": 31
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 32
+          }
+        ]
+      ],
+      [
+        "FOR",
+        [
+          {
+            "action": 0,
+            "state_id": 28
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "cont_sentencas",
+        59
+      ],
+      [
+        "sentencas",
+        60
+      ],
+      [
+        "comando",
+        25
+      ],
+      [
+        "chamada_procedimento",
+        33
+      ]
+    ],
+    "state_id": 43,
+    "symbol": "SEMICOLON"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 62
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "var_read",
+        61
+      ]
+    ],
+    "state_id": 44,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 64
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "var_write",
+        63
+      ]
+    ],
+    "state_id": 45,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "ASSIGN",
+        [
+          {
+            "action": 0,
+            "state_id": 65
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 46,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 66
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 47,
+    "symbol": "sentencas"
+  },
+  {
+    "actions": [
+      [
+        "RELATION",
+        [
+          {
+            "action": 0,
+            "state_id": 68
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "condicao",
+        67
+      ]
+    ],
+    "state_id": 48,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RELATION",
+        [
+          {
+            "action": 0,
+            "state_id": 68
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "condicao",
+        69
+      ]
+    ],
+    "state_id": 49,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 77
+          }
+        ]
+      ],
+      [
+        "OPERATOR_BAG",
+        [
+          {
+            "action": 0,
+            "state_id": 73
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 78
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 76
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 75
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "expressao",
+        70
+      ],
+      [
+        "expressao_num",
+        71
+      ],
+      [
+        "expressao_bag",
+        72
+      ],
+      [
+        "termo",
+        74
+      ]
+    ],
+    "state_id": 50,
+    "symbol": "ASSIGN"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 43
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 51,
+    "symbol": "argumentos"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 77
+          }
+        ]
+      ],
+      [
+        "OPERATOR_BAG",
+        [
+          {
+            "action": 0,
+            "state_id": 73
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 78
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 76
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 75
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "lista_arg",
+        79
+      ],
+      [
+        "expressao",
+        80
+      ],
+      [
+        "expressao_num",
+        71
+      ],
+      [
+        "expressao_bag",
+        72
+      ],
+      [
+        "termo",
+        74
+      ]
+    ],
+    "state_id": 52,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 81
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 53,
+    "symbol": "COLON"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 82
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 54,
+    "symbol": "lista_parametros"
+  },
+  {
+    "actions": [
+      [
+        "COLON",
+        [
+          {
+            "action": 0,
+            "state_id": 83
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 55,
+    "symbol": "lista_id"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 85
+          }
+        ]
+      ],
+      [
+        "COLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 24
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "cont_lista_id",
+        84
+      ]
+    ],
+    "state_id": 56,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 7
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "corpo",
+        86
+      ],
+      [
+        "declara",
+        6
+      ]
+    ],
+    "state_id": 57,
+    "symbol": "SEMICOLON"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 20
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "mais_dc",
+        87
+      ]
+    ],
+    "state_id": 58,
+    "symbol": "dvar"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 27
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 27
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 59,
+    "symbol": "cont_sentencas"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 28
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 28
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 60,
+    "symbol": "sentencas"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 88
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 61,
+    "symbol": "var_read"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 31
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 90
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "mais_var_read",
+        89
+      ]
+    ],
+    "state_id": 62,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 91
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 63,
+    "symbol": "var_write"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 34
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 93
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "mais_var_write",
+        92
+      ]
+    ],
+    "state_id": 64,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 77
+          }
+        ]
+      ],
+      [
+        "OPERATOR_BAG",
+        [
+          {
+            "action": 0,
+            "state_id": 73
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 78
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 76
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 75
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "expressao",
+        94
+      ],
+      [
+        "expressao_num",
+        71
+      ],
+      [
+        "expressao_bag",
+        72
+      ],
+      [
+        "termo",
+        74
+      ]
+    ],
+    "state_id": 65,
+    "symbol": "ASSIGN"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 95
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 66,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 96
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 67,
+    "symbol": "condicao"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 97
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 68,
+    "symbol": "RELATION"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 98
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 69,
+    "symbol": "condicao"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 41
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 70,
+    "symbol": "expressao"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 53
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 53
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 53
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 53
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 71,
+    "symbol": "expressao_num"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 54
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 54
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 54
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 54
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 72,
+    "symbol": "expressao_bag"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 99
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 73,
+    "symbol": "OPERATOR_BAG"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 55
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 55
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 55
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 55
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 74,
+    "symbol": "termo"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 61
+          },
+          {
+            "action": 1,
+            "prod_id": 45
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 61
+          },
+          {
+            "action": 1,
+            "prod_id": 45
+          }
+        ]
+      ],
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 52
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 61
+          },
+          {
+            "action": 1,
+            "prod_id": 45
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 61
+          },
+          {
+            "action": 1,
+            "prod_id": 45
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "argumentos",
+        100
+      ]
+    ],
+    "state_id": 75,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 62
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 62
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 62
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 62
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 76,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 63
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 63
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 63
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 63
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 77,
+    "symbol": "REAL"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 101
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 78,
+    "symbol": "OPERATOR"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 102
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 79,
+    "symbol": "lista_arg"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 48
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 104
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "cont_lista_arg",
+        103
+      ]
+    ],
+    "state_id": 80,
+    "symbol": "expressao"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 105
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 81,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 17
+          }
+        ]
+      ],
+      [
+        "COLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 17
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 82,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 106
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 83,
+    "symbol": "COLON"
+  },
+  {
+    "actions": [
+      [
+        "COLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 22
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 84,
+    "symbol": "cont_lista_id"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 56
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "lista_id",
+        107
+      ]
+    ],
+    "state_id": 85,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 108
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 86,
+    "symbol": "corpo"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 1,
+            "prod_id": 6
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 1,
+            "prod_id": 6
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 6
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 87,
+    "symbol": "mais_dc"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 35
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 88,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 29
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 89,
+    "symbol": "mais_var_read"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 62
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "var_read",
+        109
+      ]
+    ],
+    "state_id": 90,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 36
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 91,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 32
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 92,
+    "symbol": "mais_var_write"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 64
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "var_write",
+        110
+      ]
+    ],
+    "state_id": 93,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 111
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 94,
+    "symbol": "expressao"
+  },
+  {
+    "actions": [
+      [
+        "RELATION",
+        [
+          {
+            "action": 0,
+            "state_id": 68
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "condicao",
+        112
+      ]
+    ],
+    "state_id": 95,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 113
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 96,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 77
+          }
+        ]
+      ],
+      [
+        "OPERATOR_BAG",
+        [
+          {
+            "action": 0,
+            "state_id": 73
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 78
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 76
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 75
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "expressao_num",
+        114
+      ],
+      [
+        "expressao_bag",
+        115
+      ],
+      [
+        "termo",
+        74
+      ]
+    ],
+    "state_id": 97,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 116
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 98,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_BRACKET",
+        [
+          {
+            "action": 0,
+            "state_id": 119
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 118
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "conteudo",
+        117
+      ]
+    ],
+    "state_id": 99,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 56
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 56
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 56
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 56
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 100,
+    "symbol": "argumentos"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 123
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 124
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 122
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 121
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "operando",
+        120
+      ]
+    ],
+    "state_id": 101,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 44
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 44
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 44
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 44
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 102,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 46
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 103,
+    "symbol": "cont_lista_arg"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 77
+          }
+        ]
+      ],
+      [
+        "OPERATOR_BAG",
+        [
+          {
+            "action": 0,
+            "state_id": 73
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 78
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 76
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 75
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "lista_arg",
+        125
+      ],
+      [
+        "expressao",
+        80
+      ],
+      [
+        "expressao_num",
+        71
+      ],
+      [
+        "expressao_bag",
+        72
+      ],
+      [
+        "termo",
+        74
+      ]
+    ],
+    "state_id": 104,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 7
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 4
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "corpo",
+        126
+      ],
+      [
+        "declara",
+        6
+      ]
+    ],
+    "state_id": 105,
+    "symbol": "SEMICOLON"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 128
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 21
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "cont_lista_par",
+        127
+      ]
+    ],
+    "state_id": 106,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "COLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 23
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 107,
+    "symbol": "lista_id"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 0,
+            "state_id": 12
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 0,
+            "state_id": 11
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 14
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "rotina",
+        129
+      ],
+      [
+        "procedimento",
+        9
+      ],
+      [
+        "funcao",
+        10
+      ]
+    ],
+    "state_id": 108,
+    "symbol": "SEMICOLON"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 30
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 109,
+    "symbol": "var_read"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 33
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 110,
+    "symbol": "var_write"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 77
+          }
+        ]
+      ],
+      [
+        "OPERATOR_BAG",
+        [
+          {
+            "action": 0,
+            "state_id": 73
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 78
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 76
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 75
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "expressao",
+        130
+      ],
+      [
+        "expressao_num",
+        71
+      ],
+      [
+        "expressao_bag",
+        72
+      ],
+      [
+        "termo",
+        74
+      ]
+    ],
+    "state_id": 111,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 131
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 112,
+    "symbol": "condicao"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 0,
+            "state_id": 132
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 113,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 133
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 114,
+    "symbol": "expressao_num"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 134
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 115,
+    "symbol": "expressao_bag"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 0,
+            "state_id": 135
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 116,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 137
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 136
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 117,
+    "symbol": "conteudo"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 138
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 118,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 0,
+            "state_id": 139
+          }
+        ]
+      ],
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 140
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 119,
+    "symbol": "LEFT_BRACKET"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 141
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 120,
+    "symbol": "operando"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 57
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 57
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 121,
+    "symbol": "IDENTIFIER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 58
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 58
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 122,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 59
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 59
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 123,
+    "symbol": "REAL"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 142
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 124,
+    "symbol": "OPERATOR"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 47
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 125,
+    "symbol": "lista_arg"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 0,
+            "state_id": 143
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 126,
+    "symbol": "corpo"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 19
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 127,
+    "symbol": "cont_lista_par"
+  },
+  {
+    "actions": [
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 56
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "lista_parametros",
+        144
+      ],
+      [
+        "lista_id",
+        55
+      ]
+    ],
+    "state_id": 128,
+    "symbol": "SEMICOLON"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 15
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 129,
+    "symbol": "rotina"
+  },
+  {
+    "actions": [
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 145
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 130,
+    "symbol": "expressao"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 38
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 131,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "WRITE",
+        [
+          {
+            "action": 0,
+            "state_id": 27
+          }
+        ]
+      ],
+      [
+        "WHILE",
+        [
+          {
+            "action": 0,
+            "state_id": 30
+          }
+        ]
+      ],
+      [
+        "REPEAT",
+        [
+          {
+            "action": 0,
+            "state_id": 29
+          }
+        ]
+      ],
+      [
+        "READ",
+        [
+          {
+            "action": 0,
+            "state_id": 26
+          }
+        ]
+      ],
+      [
+        "IF",
+        [
+          {
+            "action": 0,
+            "state_id": 31
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 32
+          }
+        ]
+      ],
+      [
+        "FOR",
+        [
+          {
+            "action": 0,
+            "state_id": 28
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "sentencas",
+        146
+      ],
+      [
+        "comando",
+        25
+      ],
+      [
+        "chamada_procedimento",
+        33
+      ]
+    ],
+    "state_id": 132,
+    "symbol": "BEGIN"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 77
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 78
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 76
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 75
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "expressao_num",
+        147
+      ],
+      [
+        "termo",
+        74
+      ]
+    ],
+    "state_id": 133,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "OPERATOR_BAG",
+        [
+          {
+            "action": 0,
+            "state_id": 73
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "expressao_bag",
+        148
+      ]
+    ],
+    "state_id": 134,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "WRITE",
+        [
+          {
+            "action": 0,
+            "state_id": 27
+          }
+        ]
+      ],
+      [
+        "WHILE",
+        [
+          {
+            "action": 0,
+            "state_id": 30
+          }
+        ]
+      ],
+      [
+        "REPEAT",
+        [
+          {
+            "action": 0,
+            "state_id": 29
+          }
+        ]
+      ],
+      [
+        "READ",
+        [
+          {
+            "action": 0,
+            "state_id": 26
+          }
+        ]
+      ],
+      [
+        "IF",
+        [
+          {
+            "action": 0,
+            "state_id": 31
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 32
+          }
+        ]
+      ],
+      [
+        "FOR",
+        [
+          {
+            "action": 0,
+            "state_id": 28
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "sentencas",
+        149
+      ],
+      [
+        "comando",
+        25
+      ],
+      [
+        "chamada_procedimento",
+        33
+      ]
+    ],
+    "state_id": 135,
+    "symbol": "BEGIN"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_BRACKET",
+        [
+          {
+            "action": 0,
+            "state_id": 119
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [
+      [
+        "conteudo",
+        150
+      ]
+    ],
+    "state_id": 136,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 67
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 67
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 67
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 67
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 137,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 66
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 66
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 66
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 66
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 138,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 68
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 68
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 139,
+    "symbol": "RIGHT_BRACKET"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 152
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 151
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 140,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 123
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 124
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 122
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 121
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "operando",
+        153
+      ]
+    ],
+    "state_id": 141,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 123
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 124
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 122
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 121
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "operando",
+        154
+      ]
+    ],
+    "state_id": 142,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "PROCEDURE",
+        [
+          {
+            "action": 0,
+            "state_id": 12
+          }
+        ]
+      ],
+      [
+        "FUNCTION",
+        [
+          {
+            "action": 0,
+            "state_id": 11
+          }
+        ]
+      ],
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 14
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "rotina",
+        155
+      ],
+      [
+        "procedimento",
+        9
+      ],
+      [
+        "funcao",
+        10
+      ]
+    ],
+    "state_id": 143,
+    "symbol": "SEMICOLON"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 20
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 144,
+    "symbol": "lista_parametros"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 0,
+            "state_id": 156
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 145,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "END",
+        [
+          {
+            "action": 0,
+            "state_id": 157
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 146,
+    "symbol": "sentencas"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 158
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 147,
+    "symbol": "expressao_num"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 159
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 148,
+    "symbol": "expressao_bag"
+  },
+  {
+    "actions": [
+      [
+        "END",
+        [
+          {
+            "action": 0,
+            "state_id": 160
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 149,
+    "symbol": "sentencas"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 161
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 150,
+    "symbol": "conteudo"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 162
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 151,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 163
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 152,
+    "symbol": "REAL"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 164
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 153,
+    "symbol": "operando"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 165
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 154,
+    "symbol": "operando"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 1,
+            "prod_id": 16
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 155,
+    "symbol": "rotina"
+  },
+  {
+    "actions": [
+      [
+        "WRITE",
+        [
+          {
+            "action": 0,
+            "state_id": 27
+          }
+        ]
+      ],
+      [
+        "WHILE",
+        [
+          {
+            "action": 0,
+            "state_id": 30
+          }
+        ]
+      ],
+      [
+        "REPEAT",
+        [
+          {
+            "action": 0,
+            "state_id": 29
+          }
+        ]
+      ],
+      [
+        "READ",
+        [
+          {
+            "action": 0,
+            "state_id": 26
+          }
+        ]
+      ],
+      [
+        "IF",
+        [
+          {
+            "action": 0,
+            "state_id": 31
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 32
+          }
+        ]
+      ],
+      [
+        "FOR",
+        [
+          {
+            "action": 0,
+            "state_id": 28
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "sentencas",
+        166
+      ],
+      [
+        "comando",
+        25
+      ],
+      [
+        "chamada_procedimento",
+        33
+      ]
+    ],
+    "state_id": 156,
+    "symbol": "BEGIN"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 39
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 157,
+    "symbol": "END"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 49
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 158,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 50
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 159,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 52
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 0,
+            "state_id": 168
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "pfalsa",
+        167
+      ]
+    ],
+    "state_id": 160,
+    "symbol": "END"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 65
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 65
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 65
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 65
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 161,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 169
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 162,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 170
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 163,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 64
+          }
+        ]
+      ],
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 64
+          }
+        ]
+      ],
+      [
+        "KEYWORD",
+        [
+          {
+            "action": 1,
+            "prod_id": 64
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 64
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 164,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 123
+          }
+        ]
+      ],
+      [
+        "OPERATOR",
+        [
+          {
+            "action": 0,
+            "state_id": 124
+          }
+        ]
+      ],
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 122
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 121
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "operando",
+        171
+      ]
+    ],
+    "state_id": 165,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "END",
+        [
+          {
+            "action": 0,
+            "state_id": 172
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 166,
+    "symbol": "sentencas"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 40
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 167,
+    "symbol": "pfalsa"
+  },
+  {
+    "actions": [
+      [
+        "BEGIN",
+        [
+          {
+            "action": 0,
+            "state_id": 173
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 168,
+    "symbol": "KEYWORD"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 174
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 169,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 175
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 170,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 176
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 171,
+    "symbol": "operando"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 37
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 172,
+    "symbol": "END"
+  },
+  {
+    "actions": [
+      [
+        "WRITE",
+        [
+          {
+            "action": 0,
+            "state_id": 27
+          }
+        ]
+      ],
+      [
+        "WHILE",
+        [
+          {
+            "action": 0,
+            "state_id": 30
+          }
+        ]
+      ],
+      [
+        "REPEAT",
+        [
+          {
+            "action": 0,
+            "state_id": 29
+          }
+        ]
+      ],
+      [
+        "READ",
+        [
+          {
+            "action": 0,
+            "state_id": 26
+          }
+        ]
+      ],
+      [
+        "IF",
+        [
+          {
+            "action": 0,
+            "state_id": 31
+          }
+        ]
+      ],
+      [
+        "IDENTIFIER",
+        [
+          {
+            "action": 0,
+            "state_id": 32
+          }
+        ]
+      ],
+      [
+        "FOR",
+        [
+          {
+            "action": 0,
+            "state_id": 28
+          }
+        ]
+      ],
+      [
+        "END",
+        [
+          {
+            "action": 1,
+            "prod_id": 26
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "sentencas",
+        177
+      ],
+      [
+        "comando",
+        25
+      ],
+      [
+        "chamada_procedimento",
+        33
+      ]
+    ],
+    "state_id": 173,
+    "symbol": "BEGIN"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 1,
+            "prod_id": 72
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 179
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "conteudo_integer_cont",
+        178
+      ]
+    ],
+    "state_id": 174,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 1,
+            "prod_id": 74
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 181
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "conteudo_real_cont",
+        180
+      ]
+    ],
+    "state_id": 175,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 60
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 60
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 176,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "END",
+        [
+          {
+            "action": 0,
+            "state_id": 182
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 177,
+    "symbol": "sentencas"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 0,
+            "state_id": 183
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 178,
+    "symbol": "conteudo_integer_cont"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 184
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 179,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 0,
+            "state_id": 185
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 180,
+    "symbol": "conteudo_real_cont"
+  },
+  {
+    "actions": [
+      [
+        "LEFT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 186
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 181,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "SEMICOLON",
+        [
+          {
+            "action": 1,
+            "prod_id": 51
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 182,
+    "symbol": "END"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 69
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 69
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 183,
+    "symbol": "RIGHT_BRACKET"
+  },
+  {
+    "actions": [
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 187
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 184,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 1,
+            "prod_id": 70
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 1,
+            "prod_id": 70
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [],
+    "state_id": 185,
+    "symbol": "RIGHT_BRACKET"
+  },
+  {
+    "actions": [
+      [
+        "REAL",
+        [
+          {
+            "action": 0,
+            "state_id": 188
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 186,
+    "symbol": "LEFT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 189
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 187,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 190
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 188,
+    "symbol": "REAL"
+  },
+  {
+    "actions": [
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 191
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 189,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "INTEGER",
+        [
+          {
+            "action": 0,
+            "state_id": 192
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 190,
+    "symbol": "COMMA"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 193
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 191,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_PARENTHESIS",
+        [
+          {
+            "action": 0,
+            "state_id": 194
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 192,
+    "symbol": "INTEGER"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 1,
+            "prod_id": 72
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 179
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "conteudo_integer_cont",
+        195
+      ]
+    ],
+    "state_id": 193,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 1,
+            "prod_id": 74
+          }
+        ]
+      ],
+      [
+        "COMMA",
+        [
+          {
+            "action": 0,
+            "state_id": 181
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false,
+      false
+    ],
+    "gotos": [
+      [
+        "conteudo_real_cont",
+        196
+      ]
+    ],
+    "state_id": 194,
+    "symbol": "RIGHT_PARENTHESIS"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 1,
+            "prod_id": 71
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 195,
+    "symbol": "conteudo_integer_cont"
+  },
+  {
+    "actions": [
+      [
+        "RIGHT_BRACKET",
+        [
+          {
+            "action": 1,
+            "prod_id": 73
+          }
+        ]
+      ]
+    ],
+    "finish_flags": [
+      false
+    ],
+    "gotos": [],
+    "state_id": 196,
+    "symbol": "conteudo_real_cont"
+  }
+]

@@ -5,28 +5,40 @@
 #include <string.h>
 
 #define N 4096
-#define MAX_LEN 64
+#define MAX_LEN 16
 #define true 1
 #define false 0
 
 typedef enum token_type_
 {
-    COLON,
+    KEYWORD,
+    IDENTIFIER,
     SEMICOLON,
     COMMA,
+    COLON,
+    BEGIN,
+    END,
+    PROCEDURE,
+    FUNCTION,
     LEFT_PARENTHESIS,
     RIGHT_PARENTHESIS,
     LEFT_BRACKET,
     RIGHT_BRACKET,
-    ASSIGNMENT,
+    ASSIGN,
     OPERATOR,
+    OPERATOR_BAG,
     RELATION,
-    BAG_OPERATOR,
     INTEGER,
     REAL,
-    IDENTIFIER,
-    KEYWORD,
-    ERROR
+    READ,
+    WRITE,
+    FOR,
+    REPEAT,
+    WHILE,
+    IF,
+    EMPTY,
+    STOP,
+    TOKEN_ERROR
 } TokenType;
 
 typedef struct token_
@@ -46,5 +58,7 @@ int rollBack();
 Token nextToken(FILE *file);
 
 void printToken(Token token);
+
+const char* getTokenTypeString(TokenType type);
 
 #endif

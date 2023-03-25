@@ -1,14 +1,15 @@
 program myProgram;
 
-var a, b, c : integer;
+var n : n;
+
+function fact(x: integer) : integer;
+var aux, return: integer;
+begin
+    aux := fact( -(x, 1) );
+    return := *(x, aux);
+end;
 
 begin
-    a := 1;
-    b := -1;
-
-    a := a + b;
-
-    if (a = 0) then begin
-        write(c);
-    end
+    read(n);
+    write(n);
 end
