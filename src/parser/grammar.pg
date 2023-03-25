@@ -130,7 +130,8 @@ termo   : IDENTIFIER
         | OPERATOR LEFT_PARENTHESIS operando COMMA operando RIGHT_PARENTHESIS
         ;
 
-expressao_bag   : OPERATOR_BAG LEFT_PARENTHESIS conteudo COMMA conteudo RIGHT_PARENTHESIS
+expressao_bag   : conteudo
+                | OPERATOR_BAG LEFT_PARENTHESIS conteudo COMMA conteudo RIGHT_PARENTHESIS
                 | OPERATOR_BAG LEFT_PARENTHESIS INTEGER RIGHT_PARENTHESIS
                 | OPERATOR_BAG LEFT_PARENTHESIS conteudo RIGHT_PARENTHESIS
                 ;

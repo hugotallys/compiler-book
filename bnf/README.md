@@ -123,7 +123,8 @@
                           | <integer_num>
                           | <real_num> 
 
-<expressao_bag>         ::= <opBag1> ( <conteudo> , <conteudo> )
+<expressao_bag>         ::= <conteudo>
+                          | <opBag1> ( <conteudo> , <conteudo> )
                           | Pos ( <integer_num> )
                           | <opBag2> ( <conteudo> )
 
