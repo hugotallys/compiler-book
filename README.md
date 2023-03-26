@@ -1,7 +1,12 @@
-# Compilers: Principles, Techniques, and Tools
+# CCompiler
 
-Building a compiler from scratch in C. Also solutions to some exercises of the book.
+Building a compiler from scratch in `C` (also some `python` aid).
 
-# Build and testing
+# Building and testing
 
-Write your test program under `test/` directory. Then `cd src` and run `make compiler && ./build/compiler` to build and run.
+Write your test program under `test/` directory. Then `cd src` and run `make compiler`
+to build the executable.
+
+## Usage
+Run `./build/compiler <input_file>` to see the output. To use the default
+test program just use `make run`.

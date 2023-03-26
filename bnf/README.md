@@ -1,7 +1,9 @@
 # Backus–Naur form
 
+In the following we define the specification of the language in BNF format.
+
 ```
-<programa>              ::= program <id> ; <corpo> •
+<programa>              ::= program <id> ; <corpo>
 
 <corpo>                 ::= <declara> <rotina> begin <sentencas> end
 
@@ -186,10 +188,3 @@
                           | ...
                           | 9
 ```
-
-## Bag data structure
-
-## Syntatic grammar
-
-1. Remove productions that generate only terminals
-2. Replace those production by a terminal itself

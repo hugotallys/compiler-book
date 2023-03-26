@@ -61,4 +61,6 @@ void printToken(Token token);
 
 const char* getTokenTypeString(TokenType type);
 
+int getTokenStream(FILE *file, Token *tokens, int *tokenCount);
+
 #endif
