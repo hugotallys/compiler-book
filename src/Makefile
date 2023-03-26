@@ -1,4 +1,4 @@
-run:
+run: compiler
 	./build/compiler "../test/program.txt"
 
 compiler: build
