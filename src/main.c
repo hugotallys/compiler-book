@@ -4,51 +4,33 @@
 #include "utils/utils.h"
 #include "parser/parser.h"
 
+#define MAX_TOKENS 1024
+
 int main()
 {
-    Token token;
+    int inputSize = 0;
+
+    Token input[MAX_TOKENS];
     FILE *inputFile = fopen("../test/program.txt", "r");
 
     init(inputFile);
 
-    int inputSize = 0;
-    Token input[100];
+    puts("### Lexical analysis started. ###");
 
-    int lexError = 0;
-
-    puts("### Lexical analysis started. ###\n> Token stream:");
-
-    while (true)
-    {
-        token = nextToken(inputFile);
-        if (*token.value != '\0') {
-            input[inputSize++] = token;
-            if (token.type == TOKEN_ERROR)
-                lexError = 1;
-        }
-        else
-            break;
-    }
-
-    fclose(inputFile);
-
-    for (int i = 0; i < inputSize; i++) {
-        printToken(input[i]);
-    }
-
-    if (lexError) {
+    if (getTokenStream(inputFile, input, &inputSize)) {
         puts("> Lexical analysis error! Invalid symbols found:");
-
         for (int i = 0; i < inputSize; i++) {
             if (input[i].type == TOKEN_ERROR) {
                 printf("%s ", input[i].value);
             }
         }
-
         puts("\n### Lexical analysis failed. ###");
-
         return -1;
     } else {
+        puts("> Token stream:");
+        for (int i = 0; i < inputSize; i++) {
+            printToken(input[i]);
+        }
         puts("### Lexical analysis succeded. ###");
     }
 
@@ -121,6 +103,8 @@ int main()
             }
         }
     }
+
+    fclose(inputFile);
 
     return 0;
 }
