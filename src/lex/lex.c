@@ -331,18 +331,17 @@ const char* getTokenTypeString(TokenType type)
 
 int getTokenStream(FILE *file, Token *tokens, int *tokenCount)
 {
-    int lexError = 0;
+    int lexSucceded = 1;
     while (true)
     {
         Token token = nextToken(file);
-        printToken(token);
         if (*token.value != '\0') {
             tokens[(*tokenCount)++] = token;
             if (token.type == TOKEN_ERROR)
-                lexError = 1;
+                lexSucceded = 0;
         }
         else
             break;
     }
-    return lexError;
+    return lexSucceded;
 }

@@ -1,6 +1,6 @@
 program myProgram;
 
-var n : n;
+var n : integer;
 
 function fact(x: integer) : integer;
 var aux, return: integer;
