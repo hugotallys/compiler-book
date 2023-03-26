@@ -5,12 +5,19 @@
 
 #define MAX_TOKENS 1024
 
-int main()
+int main(int argc, char *argv[])
 {
+    puts("### Compiler started. ###");
+
+    if (argc != 2) {
+        puts("> Please, specify a input file as a comand line parameter: ./compiler <input file>");
+        return -1;
+    }
+
     int inputSize = 0;
 
     Token input[MAX_TOKENS];
-    FILE *inputFile = fopen("../test/program.txt", "r");
+    FILE *inputFile = fopen(argv[1], "r");
 
     init(inputFile);
 
