@@ -15,15 +15,23 @@ def get_action_table_row(row):
     return [get_action_table_entry(r) for r in row]
 
 
+action2int = {
+    'SHIFT': 0,
+    'REDUCE': 1,
+    'ACCEPT': 2,
+    'ERROR': 3
+}
+
+
 def get_action_table_entry(action_value):
     if action_value == '':
-        return {'action': 'ERROR', 'id': -1}
+        return {'action': action2int['ERROR'], 'id': 0}
     elif action_value == 'acc':
-        return {'action': 'ACCEPT', 'id': -1}
+        return {'action': action2int['ACCEPT'], 'id': 0}
     elif action_value[0] == 's':
-        return {'action': 'SHIFT', 'id': action_value[1:]}
+        return {'action': action2int['SHIFT'], 'id': action_value[1:]}
     elif action_value[0] == 'r':
-        return {'action': 'REDUCE', 'id': action_value[1:]}
+        return {'action': action2int['REDUCE'], 'id': action_value[1:]}
 
 
 if __name__ == "__main__":
@@ -106,72 +114,46 @@ if __name__ == "__main__":
     # enum for nonterminals
     nonterminals_enum = Enum('NonTerminal', typedef=True)
 
-    for nonterminal in non_terminals.strip(' ').split(' '):
+    nt2int = {}
+
+    for i, nonterminal in enumerate(non_terminals.strip(' ').split(' ')):
         nonterminals_enum.add_value(nonterminal)
+        nt2int[nonterminal] = i
 
     nonterminals_enum.add_value("NON_TERMINAL_SIZE")
+    nt2int["NON_TERMINAL_SIZE"] = len(non_terminals.strip(' ').split(' '))
 
     cw.add_line('')
 
     cw.add_enum(nonterminals_enum)
 
     production_array = [
-        {"left": str(p.symbol), "rightSize": len(p.rhs)} for p in prods
+        (nt2int[str(p.symbol)], len(p.rhs)) for p in prods[1:]
     ]
 
-    cw.add_line('')
-
-    text = "Production productions[N_PRODUCTIONS] = {" + ", ".join(
-        [f"{{.left = {p['left']}, .rightSize = {p['rightSize']}}}" for p in production_array[1:]]
-    ) + "};"
-
-    cw.add_line(text)
+    with open('productions.txt', 'w') as file:
+        for p in production_array:
+            file.write(f"{p[0]} {p[1]}\n")
 
     cw.add_line('')
 
     # define the action table
     action_table = df[terminals.split(' ')].to_numpy()
 
-    action_table = [get_action_table_row(row) for row in action_table]
-
-    # adds the action table to the code
-    text = "TableEntry actionTable[N_STATES][TERMINAL_SIZE] = {"
-
-    for i, row in enumerate(action_table):
-        text += "{"
-        for j, entry in enumerate(row):
-            text += f"{{.action = {entry['action']}, .id = {entry['id']}}}"
-            if j != len(row) - 1:
-                text += ", "
-        text += "}"
-        if i != len(action_table) - 1:
-            text += ", "
-
-    text += "};"
-
-    cw.add_line(text)
+    with open('action_table.txt', 'w') as file:
+        for i, row in enumerate(action_table):
+            for j, entry in enumerate(row):
+                action, id_ = get_action_table_entry(entry).values()
+                file.write(f"{action} {id_}\n")
 
     cw.add_line('')
 
     # define the goto table
-    goto_table = df[non_terminals.strip(' ').split(' ')].replace('', -1).to_numpy()
+    goto_table = df[non_terminals.strip(' ').split(' ')].replace('', 0).to_numpy()
 
-    text = "int goTable[N_STATES][NON_TERMINAL_SIZE] = {"
-
-    for i, row in enumerate(goto_table):
-        text += "{"
-        for j, entry in enumerate(row):
-            text += f"{entry}"
-            if j != len(row) - 1:
-                text += ", "
-        text += "}"
-        if i != len(goto_table) - 1:
-            text += ", "
-
-    text += "};"
-
-    cw.add_line(text)
-
-    cw.add_line('')
+    with open('goto_table.txt', 'w') as file:
+        for i, row in enumerate(goto_table):
+            for j, entry in enumerate(row):
+                file.write(f"{entry}\n")
 
     cw.write_to_file('output.c')
