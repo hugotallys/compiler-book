@@ -1,6 +1,7 @@
 program myProgram;
 
 var n : integer;
+var myBag: bagOfInteger;
 
 function fact(x: integer) : integer;
 var aux, return: integer;
@@ -10,6 +11,7 @@ begin
 end;
 
 begin
+    myBag := { (1, 2), (3, 4) };
     read(n);
     write(n);
 end
