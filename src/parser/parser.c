@@ -1,4 +1,5 @@
 #include "parser.h"
+#include "../utils/stable.h"
 
 // function to open production file and read it line by line
 void readProductions(Production *productions) {
@@ -13,10 +14,11 @@ void readProductions(Production *productions) {
 
     for (int i = 0; i < N_PRODUCTIONS; i++) {
         fgets(line, sizeof(line), file);
+        char *ptr;
         char *token = strtok(line, " ");
-        productions[i].left = atoi(token);
+        productions[i].left = strtol(token, &ptr, 10);
         token = strtok(NULL, " ");
-        productions[i].rightSize = atoi(token);
+        productions[i].rightSize = strtol(token, &ptr, 10);
     }
 
     fclose(file);
@@ -36,10 +38,11 @@ void readActionTable(TableEntry actionTable[N_STATES][TERMINAL_SIZE]) {
     for (int i = 0; i < N_STATES; i++) {
         for (int j = 0; j < TERMINAL_SIZE; j++) {
             fgets(line, sizeof(line), file);
+            char *ptr;
             char *token = strtok(line, " ");
-            actionTable[i][j].action = atoi(token);
+            actionTable[i][j].action = strtol(token, &ptr, 10);
             token = strtok(NULL, " ");
-            actionTable[i][j].id = atoi(token);
+            actionTable[i][j].id = strtol(token, &ptr, 10);
         }
     }
 
@@ -60,8 +63,9 @@ void readGoToTable(int goTable[N_STATES][NON_TERMINAL_SIZE]) {
     for (int i = 0; i < N_STATES; i++) {
         for (int j = 0; j < NON_TERMINAL_SIZE; j++) {
             fgets(line, sizeof(line), file);
+            char *ptr;
             char *token = strtok(line, " ");
-            goTable[i][j] = atoi(token);
+            goTable[i][j] = strtol(token, &ptr, 10);;
         }
     }
 
@@ -89,6 +93,36 @@ int parse(Token *input, int inputSize) {
 
     push(stack, 0);
 
+    SymbolTable *symbolTable = newSymbolTable(100);
+
+    Symbol symbol = {
+            .idName = "myVar",
+            .idType = KEYWORD,
+            .type = INTEGER,
+            .value = 0.0,
+            .scope = 0
+    };
+
+    Symbol symbol_ = {
+            .idName = "myFoo",
+            .idType = FUNCTION,
+            .type = REAL,
+            .value = 3.1415,
+            .scope = 0
+    };
+
+    Symbol symbol__ = {
+            .idName = "myPoo",
+            .idType = PROCEDURE,
+            .type = INTEGER,
+            .value = -2.0,
+            .scope = 0
+    };
+
+    insertSymbol(symbolTable, symbol);
+    insertSymbol(symbolTable, symbol_);
+    insertSymbol(symbolTable, symbol__);
+
     while (1) {
         int s = peek(stack);
 
@@ -103,7 +137,7 @@ int parse(Token *input, int inputSize) {
             s = peek(stack);
             push(stack, goTable[s][productions[entry.id - 1].left]);
         } else if (entry.action == ACCEPT) {
-            puts("\n<Symbol table here>");
+            printSymbolTable(symbolTable);
             return 1;
         } else {
             puts("> Syntax error at token:");

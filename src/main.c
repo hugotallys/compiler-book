@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    puts("### Syntax analysis started. ###");
+    puts("### Syntax analysis started. ###\n");
 
     if (parse(input, inputSize)) {
         puts("\n### Syntax analysis succeded. Symbol table generated. ###");
