@@ -36,6 +36,7 @@ typedef enum token_type_
     REPEAT,
     WHILE,
     IF,
+    VAR,
     EMPTY,
     STOP,
     TOKEN_ERROR

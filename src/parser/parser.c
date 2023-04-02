@@ -95,33 +95,24 @@ int parse(Token *input, int inputSize) {
 
     SymbolTable *symbolTable = newSymbolTable(100);
 
-    Symbol symbol = {
-            .idName = "myVar",
-            .idType = KEYWORD,
-            .type = INTEGER,
-            .value = 0.0,
-            .scope = 0
+     Symbol symbol_var_n = {
+        .idName = "n",
+        .idType = VAR,
+        .type = INTEGER,
+        .value = 0.0,
+        .scope = 0
+     };
+
+    Symbol symbol_function_fact = {
+        .idName = "fact",
+        .idType = FUNCTION,
+        .type = INTEGER,
+        .value = 0.0,
+        .scope = 0
     };
 
-    Symbol symbol_ = {
-            .idName = "myFoo",
-            .idType = FUNCTION,
-            .type = REAL,
-            .value = 3.1415,
-            .scope = 0
-    };
-
-    Symbol symbol__ = {
-            .idName = "myPoo",
-            .idType = PROCEDURE,
-            .type = INTEGER,
-            .value = -2.0,
-            .scope = 0
-    };
-
-    insertSymbol(symbolTable, symbol);
-    insertSymbol(symbolTable, symbol_);
-    insertSymbol(symbolTable, symbol__);
+    insertSymbol(symbolTable, symbol_var_n);
+    insertSymbol(symbolTable, symbol_function_fact);
 
     while (1) {
         int s = peek(stack);

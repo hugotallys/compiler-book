@@ -61,10 +61,6 @@ void printSymbolTable(SymbolTable *symbolTable) {
         const char *idTypeName = getTokenTypeString(symbol.idType);
         const char *typeName = getTokenTypeString(symbol.type);
 
-        if (strcmp(idTypeName, "KEYWORD") == 0) {
-            idTypeName = "VAR";
-        }
-
         printf("| %-16s | %-16s | %-16s |", symbol.idName, idTypeName, typeName);
 
         if (symbol.type == INTEGER) {

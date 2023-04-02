@@ -44,6 +44,7 @@ const char *tokenTypeNames[] = {
     "REPEAT",
     "WHILE",
     "IF",
+    "VAR",
     "EMPTY",
     "STOP",
     "TOKEN_ERROR"
@@ -268,6 +269,8 @@ Token nextToken(FILE *file)
                     token.type = WHILE;
                 else if (strcmp(token.value, "if") == 0)
                     token.type = IF;
+                else if (strcmp(token.value, "var") == 0)
+                    token.type = VAR;
                 else if (isKeyword(token.value))
                     token.type = KEYWORD;
                 return token;
