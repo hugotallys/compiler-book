@@ -9,8 +9,8 @@
 
 typedef struct {
     char *idName;
-    TokenType idType;
-    TokenType type;
+    TokenType entryType;
+    TokenType evalType;
     double value;
     int scope;
 } Symbol;
@@ -35,5 +35,9 @@ void removeSymbol(SymbolTable *symbolTable, char *name, int scope);
 
 // prints the symbol table
 void printSymbolTable(SymbolTable *symbolTable);
+
+char *entryTypeToString(TokenType entryType);
+
+char *evalTypeToString(TokenType evalType);
 
 #endif //COMPILER_BOOK_STABLE_H

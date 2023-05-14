@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     puts("### Compiler started. ###");
 
     if (argc != 2) {
-        puts("> Please, specify a input file as a comand line parameter: ./compiler <input file>");
+        puts("> Please, specify a input file as a command line parameter: ./compiler <input file>");
         return -1;
     }
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         for (int i = 0; i < inputSize; i++) {
             printToken(input[i]);
         }
-        puts("### Lexical analysis succeded. ###");
+        puts("### Lexical analysis succeeded. ###");
     } else {
         puts("> Lexical analysis error! Invalid symbols found:");
         for (int i = 0; i < inputSize; i++) {
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     puts("### Syntax analysis started. ###\n");
 
     if (parse(input, inputSize)) {
-        puts("\n### Syntax analysis succeded. Symbol table generated. ###");
+        puts("\n### Syntax analysis succeeded. Symbol table generated. ###");
     } else {
         puts("### Syntax analysis failed. ###");
     }

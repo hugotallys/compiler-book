@@ -39,7 +39,8 @@ typedef enum token_type_
     VAR,
     EMPTY,
     STOP,
-    TOKEN_ERROR
+    TOKEN_ERROR,
+    PARAMETER
 } TokenType;
 
 typedef struct token_

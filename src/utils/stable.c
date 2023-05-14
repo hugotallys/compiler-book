@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "stable.h"
 
 // create a new symbol table
@@ -19,7 +20,12 @@ SymbolTable *newSymbolTable(int capacity) {
 void insertSymbol(SymbolTable *symbolTable, Symbol symbol) {
     if (symbolTable->size == symbolTable->capacity) {
         symbolTable->capacity *= 2;
-        symbolTable->data = (Symbol *) realloc(symbolTable->data, symbolTable->capacity * sizeof(Symbol));
+        Symbol *temp = (Symbol *) realloc(symbolTable->data, symbolTable->capacity * sizeof(Symbol));
+        if (temp == NULL) {
+            puts("Error: could not allocate memory for symbol table.");
+            exit(-1);
+        }
+        symbolTable->data = temp;
     }
     symbolTable->data[symbolTable->size++] = symbol;
 }
@@ -58,14 +64,14 @@ void printSymbolTable(SymbolTable *symbolTable) {
 
         Symbol symbol = symbolTable->data[i];
 
-        const char *idTypeName = getTokenTypeString(symbol.idType);
-        const char *typeName = getTokenTypeString(symbol.type);
+        const char *idTypeName = getTokenTypeString(symbol.entryType);
+        const char *typeName = getTokenTypeString(symbol.evalType);
 
         printf("| %-16s | %-16s | %-16s |", symbol.idName, idTypeName, typeName);
 
-        if (symbol.type == INTEGER) {
+        if (symbol.evalType == INTEGER) {
             printf(" %-16d | ", (int) symbol.value);
-        } else if (symbol.type == REAL) {
+        } else if (symbol.evalType == REAL) {
             printf(" %-16.4f | ", symbol.value);
         } else {
             printf(" %-16s | ", "-");

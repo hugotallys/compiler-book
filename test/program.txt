@@ -11,7 +11,5 @@ begin
 end;
 
 begin
-    myBag := { (1, 2), (3, 4) };
-    read(n);
-    write(n);
+    n := fact(3);
 end
