@@ -1,15 +1,18 @@
 program myProgram;
 
-var n : integer;
-var myBag: bagOfInteger;
+var a, b, c : integer;
+var x, y, z : real;
 
-function fact(x: integer) : integer;
-var aux, return: integer;
-begin
-    aux := fact( -(x, 1) );
-    return := *(x, aux);
-end;
+var myBagI: bagOfInteger;
+var myBagR: bagOfReal;
 
 begin
-    n := fact(3);
+    a := 1;
+    b := 3;
+    c := *(a, b);
+
+    x := -(a, 2);
+    y := 3.1415;
+
+    z := /(x, y);
 end
