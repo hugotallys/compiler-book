@@ -74,7 +74,7 @@ void printSymbolTable(SymbolTable *symbolTable) {
         } else if (symbol.evalType == REAL) {
             printf(" %-16.4f | ", symbol.value);
         } else {
-            printf(" %-16s | ", "-");
+            printf(" %-16s | ", "{}");
         }
 
         printf("%-16d |\n", symbol.scope);

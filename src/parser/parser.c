@@ -1,5 +1,4 @@
 #include "parser.h"
-#include "../utils/stable.h"
 
 // function to open production file and read it line by line
 void readProductions(Production *productions) {
@@ -93,46 +92,6 @@ int parse(Token *input, int inputSize) {
 
     push(stack, 0);
 
-    SymbolTable *symbolTable = newSymbolTable(100);
-
-     Symbol symbol_var_n = {
-        .idName = "n",
-        .entryType = VAR,
-        .evalType = INTEGER,
-        .value = 0.0,
-        .scope = 0
-     };
-
-    Symbol symbol_function_fact = {
-        .idName = "fact",
-        .entryType = FUNCTION,
-        .evalType = INTEGER,
-        .value = 0.0,
-        .scope = 0
-    };
-
-    Symbol symbol_var_s = {
-        .idName = "s",
-        .entryType = VAR,
-        .evalType = REAL,
-        .value = 1.0,
-        .scope = 0
-    };
-
-    // insert symbols into symbol table
-    insertSymbol(symbolTable, symbol_var_n);
-    insertSymbol(symbolTable, symbol_function_fact);
-    insertSymbol(symbolTable, symbol_var_s);
-
-    // gets a symbol by name and scope
-    Symbol *symbol = getSymbol(symbolTable, "n", 0);
-
-    // modifies its value
-    symbol->value = 5.0;
-
-    // removes a symbol by name and scope
-    removeSymbol(symbolTable, "s", 0);
-
     while (1) {
         int s = peek(stack);
 
@@ -147,7 +106,6 @@ int parse(Token *input, int inputSize) {
             s = peek(stack);
             push(stack, goTable[s][productions[entry.id - 1].left]);
         } else if (entry.action == ACCEPT) {
-            printSymbolTable(symbolTable);
             return 1;
         } else {
             puts("> Syntax error at token:");

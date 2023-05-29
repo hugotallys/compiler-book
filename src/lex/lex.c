@@ -48,7 +48,9 @@ const char *tokenTypeNames[] = {
     "EMPTY",
     "STOP",
     "TOKEN_ERROR",
-    "PARAMETER"
+    "PARAMETER",
+    "BAG_REAL",
+    "BAG_INTEGER"
 };
 
 static inline int isLetter(char c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
