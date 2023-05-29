@@ -13,10 +13,11 @@ void readProductions(Production *productions) {
 
     for (int i = 0; i < N_PRODUCTIONS; i++) {
         fgets(line, sizeof(line), file);
+        char *ptr;
         char *token = strtok(line, " ");
-        productions[i].left = atoi(token);
+        productions[i].left = strtol(token, &ptr, 10);
         token = strtok(NULL, " ");
-        productions[i].rightSize = atoi(token);
+        productions[i].rightSize = strtol(token, &ptr, 10);
     }
 
     fclose(file);
@@ -36,10 +37,11 @@ void readActionTable(TableEntry actionTable[N_STATES][TERMINAL_SIZE]) {
     for (int i = 0; i < N_STATES; i++) {
         for (int j = 0; j < TERMINAL_SIZE; j++) {
             fgets(line, sizeof(line), file);
+            char *ptr;
             char *token = strtok(line, " ");
-            actionTable[i][j].action = atoi(token);
+            actionTable[i][j].action = strtol(token, &ptr, 10);
             token = strtok(NULL, " ");
-            actionTable[i][j].id = atoi(token);
+            actionTable[i][j].id = strtol(token, &ptr, 10);
         }
     }
 
@@ -60,8 +62,9 @@ void readGoToTable(int goTable[N_STATES][NON_TERMINAL_SIZE]) {
     for (int i = 0; i < N_STATES; i++) {
         for (int j = 0; j < NON_TERMINAL_SIZE; j++) {
             fgets(line, sizeof(line), file);
+            char *ptr;
             char *token = strtok(line, " ");
-            goTable[i][j] = atoi(token);
+            goTable[i][j] = strtol(token, &ptr, 10);;
         }
     }
 
@@ -103,7 +106,6 @@ int parse(Token *input, int inputSize) {
             s = peek(stack);
             push(stack, goTable[s][productions[entry.id - 1].left]);
         } else if (entry.action == ACCEPT) {
-            puts("\n<Symbol table here>");
             return 1;
         } else {
             puts("> Syntax error at token:");

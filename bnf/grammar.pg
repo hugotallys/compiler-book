@@ -4,14 +4,14 @@ programa    : KEYWORD IDENTIFIER SEMICOLON corpo
 corpo   : declara rotina BEGIN sentencas END
         ;
 
-declara : KEYWORD dvar mais_dc
+declara : VAR dvar mais_dc
         | EMPTY
         ;
 
 mais_dc : SEMICOLON cont_dc
         ;
 
-cont_dc : KEYWORD dvar mais_dc
+cont_dc : VAR dvar mais_dc
         | EMPTY
         ;
 
@@ -176,6 +176,4 @@ FOR: /FOR/;
 REPEAT: /REPEAT/;
 WHILE: /WHILE/;
 IF: /IF/;
-
-
-
+VAR: /VAR/;

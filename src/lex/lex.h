@@ -36,9 +36,13 @@ typedef enum token_type_
     REPEAT,
     WHILE,
     IF,
+    VAR,
     EMPTY,
     STOP,
-    TOKEN_ERROR
+    TOKEN_ERROR,
+    PARAMETER,
+    BAG_REAL,
+    BAG_INTEGER
 } TokenType;
 
 typedef struct token_

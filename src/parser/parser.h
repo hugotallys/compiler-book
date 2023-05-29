@@ -13,7 +13,7 @@
 
 #define N_STATES 198
 #define N_PRODUCTIONS 75
-#define TERMINAL_SIZE 27
+#define TERMINAL_SIZE 28
 #define NON_TERMINAL_SIZE 38
 
 typedef enum {
